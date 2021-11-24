@@ -1,6 +1,6 @@
 {
   "name": "bitsights",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.6.0",
@@ -25,8 +25,8 @@
     }
   },
   "scripts": {
-		"cm": "git-cz",
-		"release": "standard-version",
+    "cm": "git-cz",
+    "release": "standard-version",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
