@@ -7,6 +7,7 @@ Programming pre-assignment for Vincit Rising Star.
 ## Symbols, abbreviations
 
 Bitcoin, BTC, ₿
+
 Euro, EUR, €
 
 ## Notable information
@@ -16,14 +17,16 @@ Euro, EUR, €
 - Market value (price of the day) given in EUR
 - Date format YYYY-MM-DD
 
+DISCLAIMER: The tool cannot do any reliable predictions into the future, only to analyse historical data of market values.
+
 ## Features
 
 - Date range user input
 - Longest downward (bearish) trend AND longest upward (bullish) trend within given date range
 - Date of highest trading volume within given date range and volume on that day in EUR
 - Insights for given date range:
-    - Prediction of best day to buy BTC
-    - Prediction of best day to sell BTC
+    - Best day to buy BTC (note: historical data)
+    - Best day to sell BTC (note: historical data)
     - Advices against buying and selling if market value trend on date range is bearish
 
 ## Development status
