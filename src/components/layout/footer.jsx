@@ -3,10 +3,13 @@
 // file provides footer for the BitSights application
 
 import React, {  } from 'react';
+import Typography from '@mui/material/Typography';
 
-const Footer = ({id, key}) => {
-  return <footer>
-    <p>BitSights application footer</p>
+import { getColor, getColorWithAlpha } from '../../styles/colors';
+
+const Footer = ({id}) => {
+  return <footer id={id} data-testid={id} style={{display: 'inline-flex', textAlign: 'center', justifyContent: 'center'}} >
+    <Typography variant='overline' sx={{fontSize: '0.7rem', color: getColorWithAlpha('text',0.5)}} >BitSights application footer</Typography>
   </footer>;
 };
 

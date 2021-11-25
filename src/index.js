@@ -4,14 +4,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+import TheLayout from './components/layout';
+
 import { APPID } from './tools/info';
-import { getColor, getColorWithAlpha } from './styles/colors';
 
 ReactDOM.render(
   <React.StrictMode>
-    <section>
-      <h1 style={{color: getColorWithAlpha('info', 0.5)}} >Kvaak kvaak, Bitcoin, kvaak kvaak</h1>
-    </section>
+    <TheLayout id={APPID()}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
