@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
-import { getColor } from './styles/colors';
+import { getColor, getColorWithAlpha } from './styles/colors';
 
 ReactDOM.render(
   <React.StrictMode>
     <section>
-      <h1 style={{color: getColor('info')}} >Kvaak kvaak, Bitcoin, kvaak kvaak</h1>
+      <h1 style={{color: getColorWithAlpha('info', 0.5)}} >Kvaak kvaak, Bitcoin, kvaak kvaak</h1>
     </section>
   </React.StrictMode>,
   document.getElementById('root')
