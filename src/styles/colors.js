@@ -1,12 +1,12 @@
 
 const colors = Object.freeze({
-  PRIMARY: [255, 204, 29],
-  SECONDARY: [11, 70, 25],
-  TERTIARY: [17, 101, 48],
-  BACKGROUND: [235, 232, 204],
-  ERR: [205, 24, 24],
-  INFO: [15, 44, 103],
-  WARN: [255, 103, 1]
+  PRIMARY: [255,204,29],
+  SECONDARY: [11,70,25],
+  TERTIARY: [17,101,48],
+  BACKGROUND: [235,232,204],
+  ERR: [205,24,24],
+  INFO: [15,44,103],
+  WARN: [255,103,1]
 });
 
 export const getColor = (whatFor = 'default') => {
