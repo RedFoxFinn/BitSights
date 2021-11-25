@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+import { APPID } from './tools/info';
 import { getColor, getColorWithAlpha } from './styles/colors';
 
 ReactDOM.render(
