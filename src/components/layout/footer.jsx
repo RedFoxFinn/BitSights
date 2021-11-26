@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { getColor, getColorWithAlpha } from '../../styles/colors';
 
 const Footer = ({id}) => {
-  return <footer id={id} data-testid={id} style={{display: 'inline-flex', textAlign: 'center', justifyContent: 'center'}} >
+  return <footer id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center'}} >
     <Typography variant='overline' sx={{fontSize: '0.7rem', color: getColorWithAlpha('text',0.5)}} >BitSights application footer</Typography>
   </footer>;
 };

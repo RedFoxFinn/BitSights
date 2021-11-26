@@ -6,7 +6,8 @@ const colors = Object.freeze({
   BACKGROUND: [235,232,204],
   ERR: [205,24,24],
   INFO: [15,44,103],
-  WARN: [255,103,1]
+  WARN: [255,103,1],
+  SPECIAL: [174,0,90]
 });
 
 export const getColor = (whatFor = 'default') => {
@@ -18,6 +19,7 @@ export const getColor = (whatFor = 'default') => {
     case 'err': return `rgb(${colors.ERR})`;
     case 'warn': return `rgb(${colors.WARN})`;
     case 'info': return `rgb(${colors.INFO})`;
+    case 'special': return `rgb(${colors.SPECIAL})`;
     default: return `rgb(${colors.PRIMARY})`;
   }  
 };
@@ -31,6 +33,7 @@ export const getColorWithAlpha = (whatFor = 'default', alphaLevel = 1.0) => {
     case 'err': return `rgb(${colors.ERR},${alphaLevel})`;
     case 'warn': return `rgb(${colors.WARN},${alphaLevel})`;
     case 'info': return `rgb(${colors.INFO},${alphaLevel})`;
+    case 'special': return `rgb(${colors.SPECIAL},${alphaLevel})`;
     default: return `rgb(${colors.PRIMARY},${alphaLevel})`;
   }  
 };

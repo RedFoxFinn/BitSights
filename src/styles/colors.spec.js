@@ -50,6 +50,11 @@ describe('colors - tool: getColor', () => {
     expect(result).toBeTruthy();
     expect(result).toMatch('rgb(15,44,103)');
   });
+  it('special', () => {
+    const result = getColor('special');
+    expect(result).toBeTruthy();
+    expect(result).toMatch('rgb(174,0,90)');
+  });
 });
 
 describe('colors - tool: getColorWithAlpha', () => {
@@ -98,5 +103,10 @@ describe('colors - tool: getColorWithAlpha', () => {
     const result = getColorWithAlpha('info', 0.2);
     expect(result).toBeTruthy();
     expect(result).toMatch('rgb(15,44,103,0.2)');
+  });
+  it('special', () => {
+    const result = getColorWithAlpha('special', 0.1);
+    expect(result).toBeTruthy();
+    expect(result).toMatch('rgb(174,0,90,0.1)');
   });
 });

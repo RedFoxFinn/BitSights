@@ -1,0 +1,10 @@
+{
+  "lang": "en",
+  "header": "Bitcoin market value analytics",
+  "footer": {
+    "source": "Source code",
+    "author": "Author",
+    "version": "Version"
+  },
+  "about": ""
+}
