@@ -1,0 +1,25 @@
+.ringring {
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  left: -0.55rem;
+  top: -0.25rem;
+  animation: pulsate 1.5s ease-out;
+  animation-iteration-count: infinite; 
+  opacity: 0.0
+}
+.load {
+  border-color: rgba(17,101,48,0.5);
+}
+.warn {
+  border-color: rgba(255,103,1,0.5);
+}
+@keyframes pulsate {
+  0% {transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {transform: scale(1.2, 1.2); opacity: 0.0;}
+}
