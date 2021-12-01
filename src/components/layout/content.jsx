@@ -4,15 +4,16 @@
 
 import React, {  } from 'react';
 
+import Stack from '@mui/material/Stack';
+
 import DateRange from '../dateInput';
 import Insight from '../insight';
 
 const Content = ({id}) => {
-  return <section id={id} data-testid={id} >
-    <p>BitSights application content</p>
-    <DateRange/>
+  return <Stack id={id} data-testid={id} direction='column' spacing={2} sx={{marginTop: '1rem', marginBottom: '1rem'}} >
+    <DateRange />
     <Insight/>
-  </section>;
+  </Stack>;
 };
 
 export default Content;

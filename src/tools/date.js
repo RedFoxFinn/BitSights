@@ -9,6 +9,12 @@ import dayjs from 'dayjs';
 const dateLowerLimit = dayjs('2013-05-01');
 const dateUpperLimit = dayjs(new Date());
 
+// tool function to sanitise date in to human readable format
+
+export const sanitiseDate = (date = new Date()) => {
+  return dayjs(date).format('YYYY-MM-DD');
+};
+
 // tool function to decrement date by one week
 
 export const decrementByWeek = (date = new Date(), format = false) => {

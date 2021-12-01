@@ -13,7 +13,6 @@ import Footer from './layout/footer';
 
 import theme from '../styles/theme';
 import { generateID } from '../tools/id';
-import { MiniDrawer } from './layout/drawer';
 
 import { set_dr_start, set_dr_end, reset_dr_start, reset_dr_end } from '../controllers/redux/slices/date';
 import { getDRStart, getDREnd } from '../tools/daterange';
@@ -40,7 +39,6 @@ const TheLayout = ({id}) => {
   
   return <Box id={id} data-testid={id} >
     <ThemeProvider theme={theme} >
-      <MiniDrawer id={generateID(id, 'drawer')} />
       <Box id={id} data-testid={id} sx={{margin: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <Header id={generateID(id, 'header')} />
         <Content id={generateID(id, 'content')} />
