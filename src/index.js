@@ -4,13 +4,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+import { store } from './controllers/redux/store';
+
 import TheLayout from './components/layout';
 
 import { APPID } from './tools/info';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TheLayout id={APPID()}/>
+    <Provider store={store} >
+      <TheLayout id={APPID()}/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

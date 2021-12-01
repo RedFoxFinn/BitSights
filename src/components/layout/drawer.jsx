@@ -56,8 +56,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export const MiniDrawer = ({id = 'drawer.default', elements = ['BitSights', 'UpToDate', 'Status', 'default']}) => {
-  return <Drawer variant='permanent' open={false} id={id} data-testid={id} >
-    <List sx={{backgroundColor: getColor('background')}} >
+  return <Drawer variant='permanent' open={false} id={id} data-testid={id} sx={{backgroundColor: 'background'}} >
+    <List sx={{backgroundColor: 'background.main'}} >
       {elements.map((text, index) => {
         switch (text) {
           case 'BitSights': return <ListItem key={text} sx={{backgroundColor: getColor('background')}} >
@@ -67,17 +67,17 @@ export const MiniDrawer = ({id = 'drawer.default', elements = ['BitSights', 'UpT
           </ListItem>;
           case 'Status': return <ListItem key={text} sx={{backgroundColor: getColor('background')}} >
             <Avatar className='ringring load' sx={{backgroundColor: 'transparent'}} >
-              <CachedIcon sx={{color: getColorWithAlpha('text',0.5)}} />
+              <CachedIcon color='info' />
             </Avatar>
           </ListItem>;
           case 'UpToDate': return <ListItem key={text} sx={{backgroundColor: getColor('background')}} >
             <ListItemIcon sx={{backgroundColor: 'transparent'}} >
-              <CheckCircleOutlineIcon sx={{color: getColor('text'), paddingLeft: '0.1rem'}} />
+              <CheckCircleOutlineIcon color='success' sx={{paddingLeft: '0.1rem'}} />
             </ListItemIcon>
           </ListItem>;
           default: return <ListItem key={'default'} sx={{backgroundColor: getColor('background')}} >
             <Avatar className='ringring warn' sx={{backgroundColor: 'transparent'}} >
-              <RunningWithErrorsIcon sx={{color: getColorWithAlpha('warn',0.5)}} />
+              <RunningWithErrorsIcon color='warning' />
             </Avatar>
           </ListItem>;
         }

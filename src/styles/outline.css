@@ -1,0 +1,6 @@
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(15, 65, 165);
+}
+.MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline, .MuiInputBase-root-MuiOutlinedInput-root:hover {
+  border-color: rgba(15,44,103,1);
+}
