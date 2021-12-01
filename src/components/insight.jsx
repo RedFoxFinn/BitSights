@@ -3,19 +3,23 @@
 // file contains the UI element of received Bitcoin trend data for the BitSights application
 
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import Icon from '@mui/material/Icon';
 
 import ArrowExpandHorizontal from 'mdi-material-ui/ArrowExpandHorizontal';
 
 import { getColor, getColorWithAlpha } from '../styles/colors';
 
 import { sanitiseDate } from '../tools/date';
+import { getBitcoinBasic } from '../controllers/services/fetch';
+import { set_marketvalues } from '../controllers/redux/slices/value';
 
-const Insight = (props) => {
+const Insight = ({id}) => {
+  const dispatcher = useDispatch();
+  useEffect(() => getBitcoinBasic());
+  useEffect(() => set_marketvalues(daterange_start, daterange_end));
   const { daterange_start, daterange_end } = useSelector(state => state.dates);
   const { marketvalues, fallback } = useSelector(state => state.values);
   return <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
