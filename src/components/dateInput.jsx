@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import DateAdapter from '@mui/lab/AdapterDayjs';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import Card from '@mui/material/Card';
 
 import { set_dr_start, set_dr_end, reset_dr_start, reset_dr_end } from '../controllers/redux/slices/date';
 import { getColor, getColorWithAlpha } from '../styles/colors';

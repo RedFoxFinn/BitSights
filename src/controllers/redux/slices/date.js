@@ -4,6 +4,8 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+import { setDRStart, setDREnd } from '../../../tools/daterange';
+
 export const dateSlice = createSlice({
   name: 'dates',
   initialState: {
@@ -29,6 +31,7 @@ export const dateSlice = createSlice({
 export const { SET_DATERANGE_START, RESET_DATERANGE_START, SET_DATERANGE_END, RESET_DATERANGE_END } = dateSlice.actions;
 
 export const set_dr_start = (startdate) => {
+  setDRStart(startdate);
   return {
     type: 'dates/SET_DATERANGE_START',
     payload: startdate
@@ -36,6 +39,7 @@ export const set_dr_start = (startdate) => {
 };
 
 export const set_dr_end = (enddate) => {
+  setDREnd(enddate);
   return {
     type: 'dates/SET_DATERANGE_END',
     payload: enddate
