@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](///compare/v0.1.10...v0.2.0) (2021-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* date range functionality ready, finalised logic differs from work-in-progress one
+
+### Features
+
+* funtionality: date range 9e4cb9c
+
 ### [0.1.10](///compare/v0.1.9...v0.1.10) (2021-12-01)
 
 
