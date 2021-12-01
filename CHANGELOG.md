@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](///compare/v0.1.9...v0.1.10) (2021-12-01)
+
+
+### Features
+
+* minor styles, added daterange picking functionality, started btc market value insights 9124fda
+
 ### [0.1.9](///compare/v0.1.8...v0.1.9) (2021-11-26)
 
 
