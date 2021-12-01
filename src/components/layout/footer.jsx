@@ -5,7 +5,7 @@
 import React, {  } from 'react';
 import Typography from '@mui/material/Typography';
 
-import { getColor, getColorWithAlpha } from '../../styles/colors';
+import { getColorWithAlpha } from '../../styles/colors';
 
 const Footer = ({id}) => {
   return <footer id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center'}} >

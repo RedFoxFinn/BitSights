@@ -14,12 +14,12 @@ import Footer from './layout/footer';
 import theme from '../styles/theme';
 import { generateID } from '../tools/id';
 
-import { set_dr_start, set_dr_end, reset_dr_start, reset_dr_end } from '../controllers/redux/slices/date';
+import { set_dr_start, set_dr_end } from '../controllers/redux/slices/date';
 import { getDRStart, getDREnd } from '../tools/daterange';
-import { createDate, decrementByWeek, incrementByWeek } from '../tools/date';
+import { createDate, decrementByWeek } from '../tools/date';
 
 const TheLayout = ({id}) => {
-  const { daterange_start, daterange_end } = useSelector(state => state.dates);
+  const { daterange_end } = useSelector(state => state.dates);
   const dispatcher = useDispatch();
 
   useEffect(() => {

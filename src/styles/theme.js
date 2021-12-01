@@ -21,7 +21,7 @@ const theme = createTheme({
       main: `${getColor('warn')}`
     },
     success: {
-      main: `${getColor('text')}`
+      main: `${getColorWithAlpha('text',0.8)}`
     },
     special: {
       main: `${getColor('special')}`

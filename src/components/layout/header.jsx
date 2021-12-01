@@ -5,7 +5,7 @@
 import React, {  } from 'react';
 import Typography from '@mui/material/Typography';
 
-import { getColor, getColorWithAlpha } from '../../styles/colors';
+import { getColor } from '../../styles/colors';
 
 const Header = ({id}) => {
   return <header id={id} data-testid={id} style={{display: 'inline-flex', textAlign: 'center', justifyContent: 'center'}} >

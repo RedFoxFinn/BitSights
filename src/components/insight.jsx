@@ -12,16 +12,21 @@ import ArrowExpandHorizontal from 'mdi-material-ui/ArrowExpandHorizontal';
 
 import { getColor, getColorWithAlpha } from '../styles/colors';
 
-import { sanitiseDate } from '../tools/date';
+import { sanitiseDate, timestampIt } from '../tools/date';
 import { getBitcoinBasic } from '../controllers/services/fetch';
-import { set_marketvalues } from '../controllers/redux/slices/value';
+import { fetchMarketData } from '../controllers/redux/slices/value';
+import { getDRStart, getDREnd } from '../tools/daterange';
 
 const Insight = ({id}) => {
-  const dispatcher = useDispatch();
-  useEffect(() => getBitcoinBasic());
-  useEffect(() => set_marketvalues(daterange_start, daterange_end));
   const { daterange_start, daterange_end } = useSelector(state => state.dates);
+  const dispatcher = useDispatch();
   const { marketvalues, fallback } = useSelector(state => state.values);
+  
+  useEffect(() => {
+    const timestamps = [timestampIt(getDRStart()), timestampIt(getDREnd(), true)]
+    dispatcher(fetchMarketData(timestamps[0].toString(), timestamps[1].toString()));
+  }, [dispatcher]);
+  
   return <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
     <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>BTC market value</Typography>
     <Stack direction='row' spacing={3} sx={{display: 'flex', alignItems: 'center', textAlign: 'center'}} >

@@ -11,8 +11,11 @@ const dateUpperLimit = dayjs(new Date());
 
 // tool function to convert date to UNIX timestamp (seconds)
 
-export const timestampIt = (date = new Date()) => {
-  return dayjs(date).hour(0).minute(0).second(0).millisecond(0).unix();
+export const timestampIt = (date = new Date(), end = false) => {
+  const timestampDate = end
+    ? dayjs(date).hour(1).minute(0).second(0).millisecond(0)
+    : dayjs(date).hour(0).minute(0).second(0).millisecond(0);
+  return timestampDate.unix();
 };
 
 // tool function to sanitise date in to human readable format

@@ -3,6 +3,7 @@
 // file provides view of content for the BitSights application
 
 import React, {  } from 'react';
+import { } from 'react-redux';
 
 import Stack from '@mui/material/Stack';
 

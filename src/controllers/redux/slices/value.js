@@ -2,10 +2,13 @@
 // 
 // 
 
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { timestampIt } from '../../../tools/date';
 import { getBitcoinMarket } from '../../services/fetch';
+
+export const fetchMarketData = createAsyncThunk(
+  'values/fetchMarketData',
+  async (startdate, enddate) => await getBitcoinMarket(startdate, enddate));
 
 export const valueSlice = createSlice({
   name: 'values',
@@ -20,23 +23,21 @@ export const valueSlice = createSlice({
     RESET_MARKETVALUES: (state, action) => {
       state.marketvalues = null;
     }, 
+  },
+  extraReducers: {
+    [fetchMarketData.pending]: (state) => {
+      state.loading = true
+    },
+    [fetchMarketData.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.marketvalues = payload
+    },
+    [fetchMarketData.rejected]: (state) => {
+      state.loading = false
+    }
   }
 });
 
 export const { SET_MARKETVALUES, RESET_MARKETVALUES } = valueSlice.actions;
-
-export const set_marketvalues = async (startdate, enddate) => {
-  const marketvalues = await getBitcoinMarket(timestampIt(startdate), timestampIt(enddate));
-  return {
-    type: 'values/SET_MARKETVALUES',
-    payload: marketvalues
-  };
-};
-
-export const reset_marketvalues = () => {
-  return {
-    type: 'values/RESET_MARKETVALUES'
-  };
-};
 
 export default valueSlice.reducer;
