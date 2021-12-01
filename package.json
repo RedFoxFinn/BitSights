@@ -2,7 +2,7 @@
   "appid": "rff.app.bitsights",
   "appname": "BitSights",
   "name": "bitsights",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "dependencies": {
     "@date-io/dayjs": "^2.11.0",
