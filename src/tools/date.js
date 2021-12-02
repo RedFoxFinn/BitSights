@@ -3,6 +3,8 @@
 // tool to create and manipulate dates for BitSights app
 
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 
 // date limitations for date range
 
@@ -13,8 +15,8 @@ const dateUpperLimit = dayjs(new Date());
 
 export const timestampIt = (date = new Date(), end = false) => {
   const timestampDate = end
-    ? dayjs(date).subtract(1, 'day').hour(1).minute(0).second(0).millisecond(0)
-    : dayjs(date).hour(0).minute(0).second(0).millisecond(0);
+    ? dayjs.utc(date).hour(1).minute(0).second(0).millisecond(0)
+    : dayjs.utc(date).subtract(1, 'day').hour(23).minute(0).second(0).millisecond(0);
   return timestampDate.unix().toString();
 };
 

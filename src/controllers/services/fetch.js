@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 import { timestampIt } from '../../tools/date';
-import { getDRStart, getDREnd } from '../../tools/daterange';
+import { getDRStart, getDREnd } from '../app/daterange';
 
 const baseUrl = 'https://api.coingecko.com/api/v3/coins/bitcoin';
 

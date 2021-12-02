@@ -12,8 +12,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-import ArrowExpandHorizontal from 'mdi-material-ui/ArrowExpandHorizontal';
-
 import { getColor, getColorWithAlpha } from '../styles/colors';
 
 import { sanitiseDate } from '../tools/date';
@@ -43,8 +41,10 @@ const Insight = (props) => {
   const TimeRangeData = () => {
     return <Stack direction='column' sx={{marginBottom: '1rem'}} >
       <Table size='small' >
-        <TimeRange/>
-        <TimeRange/>
+        <TableBody>
+          <TimeRange/>
+          <TimeRange/>
+        </TableBody>
       </Table>
     </Stack>;
   };
@@ -60,24 +60,26 @@ const Insight = (props) => {
   const BasicData = () => {
     return <Stack direction='column' >
       <Table size='small' >
-        <TableRow>
-          <TableCell><Typography variant='body1' >Value</Typography></TableCell>
-          <TableCell><Typography variant='body1' sx={{color: getColor('warn')}} >{basicInfo?.market_data?.current_price ?? fallback} €</Typography></TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell><Typography variant='subtitle1' >Name</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{basicInfo?.name}</Typography></TableCell>
-          <TableCell><Typography variant='subtitle1' >Symbol</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{basicInfo?.symbol}{basicInfo?.symbol === 'btc' && ', ₿'}</Typography></TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell><Typography variant='subtitle1' >Hashing</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{basicInfo?.hashing}</Typography></TableCell>
-          <TableCell><Typography variant='subtitle1' >Genesis date</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{sanitiseDate(basicInfo?.genesis_date)}</Typography></TableCell>
-        </TableRow>
-        <AllTimeHighLow />
-        <AllTimeHighLow low={true} />
+        <TableBody>
+          <TableRow>
+            <TableCell><Typography variant='body1' >Value</Typography></TableCell>
+            <TableCell><Typography variant='body1' sx={{color: getColor('warn')}} >{basicInfo?.market_data?.current_price ?? fallback} €</Typography></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell><Typography variant='subtitle1' >Name</Typography></TableCell>
+            <TableCell><Typography variant='body1' >{basicInfo?.name}</Typography></TableCell>
+            <TableCell><Typography variant='subtitle1' >Symbol</Typography></TableCell>
+            <TableCell><Typography variant='body1' >{basicInfo?.symbol}{basicInfo?.symbol === 'btc' && ', ₿'}</Typography></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell><Typography variant='subtitle1' >Hashing</Typography></TableCell>
+            <TableCell><Typography variant='body1' >{basicInfo?.hashing}</Typography></TableCell>
+            <TableCell><Typography variant='subtitle1' >Genesis date</Typography></TableCell>
+            <TableCell><Typography variant='body1' >{sanitiseDate(basicInfo?.genesis_date)}</Typography></TableCell>
+          </TableRow>
+          <AllTimeHighLow />
+          <AllTimeHighLow low={true} />
+        </TableBody>
       </Table>
     </Stack>;
   };

@@ -2,7 +2,7 @@
 // daterange.js
 // BitSights internal tool to handle set dates within localstorage
 
-import { APPID } from './info';
+import { APPID } from '../../tools/info';
 
 // getters
 

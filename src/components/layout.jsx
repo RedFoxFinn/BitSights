@@ -15,7 +15,7 @@ import theme from '../styles/theme';
 import { generateID } from '../tools/id';
 
 import { set_dr_start, set_dr_end } from '../controllers/redux/slices/date';
-import { getDRStart, getDREnd } from '../tools/daterange';
+import { getDRStart, getDREnd } from '../controllers/app/daterange';
 import { createDate, decrementByWeek } from '../tools/date';
 
 const TheLayout = ({id}) => {
