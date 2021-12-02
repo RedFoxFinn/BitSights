@@ -8,7 +8,10 @@ import { getBitcoinMarket } from '../../services/fetch';
 
 export const fetchMarketData = createAsyncThunk(
   'values/fetchMarketData',
-  async (startdate, enddate) => await getBitcoinMarket(startdate, enddate));
+  async (thunkAPI) => {
+    const { prices } = await getBitcoinMarket();
+    return prices ?? null;
+  });
 
 export const valueSlice = createSlice({
   name: 'values',

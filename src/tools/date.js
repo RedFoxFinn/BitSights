@@ -13,9 +13,9 @@ const dateUpperLimit = dayjs(new Date());
 
 export const timestampIt = (date = new Date(), end = false) => {
   const timestampDate = end
-    ? dayjs(date).hour(1).minute(0).second(0).millisecond(0)
+    ? dayjs(date).subtract(1, 'day').hour(1).minute(0).second(0).millisecond(0)
     : dayjs(date).hour(0).minute(0).second(0).millisecond(0);
-  return timestampDate.unix();
+  return timestampDate.unix().toString();
 };
 
 // tool function to sanitise date in to human readable format

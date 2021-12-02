@@ -9,6 +9,7 @@ import DateAdapter from '@mui/lab/AdapterDayjs';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 
+import { fetchMarketData } from '../controllers/redux/slices/value';
 import { set_dr_start, set_dr_end } from '../controllers/redux/slices/date';
 import { } from '../styles/colors';
 
@@ -24,7 +25,8 @@ const DateRange = ({id}) => {
 const StartDate = ({dispatcher, value}) => {
 
   const handleDateChange = (newValue) => {
-    dispatcher(set_dr_start(newValue))
+    dispatcher(set_dr_start(newValue));
+    dispatcher(fetchMarketData());
   };
 
   return <LocalizationProvider dateAdapter={DateAdapter}>
@@ -46,7 +48,8 @@ const StartDate = ({dispatcher, value}) => {
 const EndDate = ({dispatcher, value}) => {
 
   const handleDateChange = (newValue) => {
-    dispatcher(set_dr_end(newValue))
+    dispatcher(set_dr_end(newValue));
+    dispatcher(fetchMarketData());
   };
 
   return <LocalizationProvider dateAdapter={DateAdapter}>
