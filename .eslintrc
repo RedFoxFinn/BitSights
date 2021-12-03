@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+      "semi": ["warn", "always"],
+      "quotes": ["warn", "single"],
+      "eqeqeq": ["error", "always", {"null": "ignore"}],
+      "no-unused-expressions": "off",
+      "indent": ["warn", 2]
+  }
+}

@@ -28,14 +28,14 @@ export const basicSlice = createSlice({
   },
   extraReducers: {
     [fetchBasicData.pending]: (state) => {
-      state.loading = true
+      state.loading = true;
     },
     [fetchBasicData.fulfilled]: (state, { payload }) => {
-      state.loading = false
-      state.basicInfo = payload
+      state.loading = false;
+      state.basicInfo = payload;
     },
     [fetchBasicData.rejected]: (state) => {
-      state.loading = false
+      state.loading = false;
     }
   }
 });

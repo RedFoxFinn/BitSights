@@ -10,16 +10,16 @@ import { getColorWithAlpha } from '../styles/colors';
 // transmutateData converts array of array to array of objects:
 // [[datetime (milliseconds), market value (euros)]] => [{datetime (seconds), value (euros)}]
 
-export const transmutateData = (marketvalueData = []) => {
+export const transmutateData = (marketvalueData = [], transmutateOnly = false) => {
   const transmutated = marketvalueData.map((dataPair) => ({datetime: Math.floor(dataPair[0]/1000), value: dataPair[1]}));
-  return sortData(transmutated);
+  return transmutateOnly ? transmutated : sortData(transmutated);
 };
 
 // sortData sorts transmutated array of data by the datetime (seconds) from earliest to latest
 
-export const sortData = (data = []) => {
+export const sortData = (data = [], sortOnly = false) => {
   const sorted = data.sort((a,b) => a.datetime - b.datetime);
-  return filterData(sorted);
+  return sortOnly ? sorted : filterData(sorted);
 };
 
 // getClosest is internal and not exported tool function to get from array the object that has closest datetime value to desired one (start, end or any from middle; these are UTC midnight values)

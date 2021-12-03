@@ -12,28 +12,28 @@ const colors = Object.freeze({
 
 export const getColor = (whatFor = 'default') => {
   switch (whatFor) {
-    case 'background': return `rgb(${colors.BACKGROUND})`;
-    case 'background-alt': return `rgb(${colors.PRIMARY})`;
-    case 'header': return `rgb(${colors.SECONDARY})`;
-    case 'text': return `rgb(${colors.TERTIARY})`;
-    case 'err': return `rgb(${colors.ERR})`;
-    case 'warn': return `rgb(${colors.WARN})`;
-    case 'info': return `rgb(${colors.INFO})`;
-    case 'special': return `rgb(${colors.SPECIAL})`;
-    default: return `rgb(${colors.PRIMARY})`;
+  case 'background': return `rgb(${colors.BACKGROUND})`;
+  case 'background-alt': return `rgb(${colors.PRIMARY})`;
+  case 'header': return `rgb(${colors.SECONDARY})`;
+  case 'text': return `rgb(${colors.TERTIARY})`;
+  case 'err': return `rgb(${colors.ERR})`;
+  case 'warn': return `rgb(${colors.WARN})`;
+  case 'info': return `rgb(${colors.INFO})`;
+  case 'special': return `rgb(${colors.SPECIAL})`;
+  default: return `rgb(${colors.PRIMARY})`;
   }  
 };
 
 export const getColorWithAlpha = (whatFor = 'default', alphaLevel = 1.0) => {
   switch (whatFor) {
-    case 'background': return `rgb(${colors.BACKGROUND},${alphaLevel})`;
-    case 'background-alt': return `rgb(${colors.PRIMARY},${alphaLevel})`;
-    case 'header': return `rgb(${colors.SECONDARY},${alphaLevel})`;
-    case 'text': return `rgb(${colors.TERTIARY},${alphaLevel})`;
-    case 'err': return `rgb(${colors.ERR},${alphaLevel})`;
-    case 'warn': return `rgb(${colors.WARN},${alphaLevel})`;
-    case 'info': return `rgb(${colors.INFO},${alphaLevel})`;
-    case 'special': return `rgb(${colors.SPECIAL},${alphaLevel})`;
-    default: return `rgb(${colors.PRIMARY},${alphaLevel})`;
+  case 'background': return `rgb(${colors.BACKGROUND},${alphaLevel})`;
+  case 'background-alt': return `rgb(${colors.PRIMARY},${alphaLevel})`;
+  case 'header': return `rgb(${colors.SECONDARY},${alphaLevel})`;
+  case 'text': return `rgb(${colors.TERTIARY},${alphaLevel})`;
+  case 'err': return `rgb(${colors.ERR},${alphaLevel})`;
+  case 'warn': return `rgb(${colors.WARN},${alphaLevel})`;
+  case 'info': return `rgb(${colors.INFO},${alphaLevel})`;
+  case 'special': return `rgb(${colors.SPECIAL},${alphaLevel})`;
+  default: return `rgb(${colors.PRIMARY},${alphaLevel})`;
   }  
 };

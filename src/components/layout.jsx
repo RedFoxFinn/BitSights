@@ -44,8 +44,8 @@ const TheLayout = ({id}) => {
         <Content id={generateID(id, 'content')} />
         <Footer id={generateID(id, 'footer')} />
       </Box>
-      </ThemeProvider>
-    </Box>;
+    </ThemeProvider>
+  </Box>;
 };
 
 export default TheLayout;

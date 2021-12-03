@@ -1,3 +1,7 @@
+
+// valueChart.js
+// component to visualise date/value dataset
+
 import React, {} from 'react';
 import {
   Chart as ChartJS,
@@ -12,7 +16,6 @@ import {
 import { Line } from 'react-chartjs-2';
 import Typography from '@mui/material/Typography';
 
-import { splinterData } from '../tools/marketvalue';
 import { getColorWithAlpha } from '../styles/colors';
 
 ChartJS.register(
@@ -38,6 +41,8 @@ const options = {
     },
   },
 };
+
+// ValueChart is BTC market value date/value line chart component
 
 const ValueChart = ({data}) => {
   return <React.Fragment>

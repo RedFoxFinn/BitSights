@@ -18,7 +18,7 @@ describe('colors - tool: getColor', () => {
   it('background', () => {
     const result = getColor('background');
     expect(result).toBeTruthy();
-    expect(result).toMatch('rgb(235,232,204)');
+    expect(result).toMatch('rgb(218,218,218)');
   });
   it('background-alt', () => {
     const result = getColor('background-alt');
@@ -72,7 +72,7 @@ describe('colors - tool: getColorWithAlpha', () => {
   it('background', () => {
     const result = getColorWithAlpha('background',0.8);
     expect(result).toBeTruthy();
-    expect(result).toMatch('rgb(235,232,204,0.8)');
+    expect(result).toMatch('rgb(218,218,218,0.8)');
   });
   it('background-alt', () => {
     const result = getColorWithAlpha('background-alt',0.7);

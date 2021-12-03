@@ -29,14 +29,14 @@ export const valueSlice = createSlice({
   },
   extraReducers: {
     [fetchMarketData.pending]: (state) => {
-      state.loading = true
+      state.loading = true;
     },
     [fetchMarketData.fulfilled]: (state, { payload }) => {
-      state.loading = false
-      state.marketvalues = payload
+      state.loading = false;
+      state.marketvalues = payload;
     },
     [fetchMarketData.rejected]: (state) => {
-      state.loading = false
+      state.loading = false;
     }
   }
 });

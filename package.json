@@ -18,8 +18,8 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.24.0",
     "chart.js": "^3.6.1",
+    "cypress": "^9.1.0",
     "dayjs": "^1.10.7",
-    "mdi-material-ui": "^7.1.0",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.0",
     "react-dom": "^17.0.2",
@@ -36,11 +36,42 @@
     "release": "standard-version",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test --colors --no-cache --coverage --verbose --notify --watchAll --noStackTrace --transformIgnorePatterns 'node_modules/*' ",
+    "ci": "react-scripts test --colors --no-cache --coverage --verbose --noStackTrace --transformIgnorePatterns 'node_modules/*'",
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+    "cy:run": "cypress run --record",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "airbnb",
+      "airbnb/hooks"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!node_modules/",
+      "!src/index.js",
+      "!src/reportWebVitals.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50
+      }
+    },
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ]
   },
   "browserslist": {
     "production": [
@@ -59,6 +90,7 @@
     "@commitlint/config-conventional": "^15.0.0",
     "commitizen": "^3.0.0",
     "cz-conventional-changelog": "^3.0.1",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "standard-version": "^9.3.2"
   },
