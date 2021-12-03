@@ -3,6 +3,8 @@
 
 Web application to display Bitcoin market value on desired date range with some insights
 
+![test/build/deploy](https://github.com/RedFoxFinn/BitSights/workflows/test\/build\/deploy/badge.svg)
+
 [![codecov](https://codecov.io/gh/RedFoxFinn/BitSights/branch/front/graph/badge.svg?token=95YUYFYK5L)](https://codecov.io/gh/RedFoxFinn/BitSights)
 
 [![BitSights](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/2kasr2/BitSights&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2kasr2/runs)
