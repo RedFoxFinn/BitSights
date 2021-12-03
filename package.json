@@ -4,6 +4,11 @@
   "name": "bitsights",
   "version": "0.3.2",
   "private": true,
+  "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RedFoxFinn/BitSights.git"
+  },
   "dependencies": {
     "@date-io/dayjs": "^2.11.0",
     "@emotion/react": "^11.6.0",
