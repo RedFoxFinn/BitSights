@@ -13,11 +13,31 @@ const dateUpperLimit = dayjs(new Date());
 
 // tool function to convert date to UNIX timestamp (seconds)
 
-export const timestampIt = (date = new Date(), end = false) => {
-  const timestampDate = end
-    ? dayjs.utc(date).hour(1).minute(0).second(0).millisecond(0)
-    : dayjs.utc(date).subtract(1, 'day').hour(23).minute(0).second(0).millisecond(0);
-  return timestampDate.unix().toString();
+export const timestampIt = (date = new Date(), end = false, midnight = false) => {
+  const timestampDate = midnight
+    ? dayjs(date).utc().hour(0).minute(0).second(0).millisecond(0)
+    : end
+      ? dayjs(date).utc().hour(1).minute(0).second(0).millisecond(0)
+      : dayjs(date).utc().subtract(1, 'day').hour(23).minute(0).second(0).millisecond(0);
+  return timestampDate.unix();
+};
+
+// tool to calculate date difference
+
+export const calculateDateDiff = (start, end) => {
+  return dayjs(end).utc().hour(0).minute(0).second(0).millisecond(0).diff(dayjs(start).utc().hour(0).minute(0).second(0).millisecond(0), 'day');
+};
+
+// tool to calculate date range length
+
+export const calculateDateRangeLength = (start, end) => {
+  return calculateDateDiff(start, end) +1;
+};
+
+// tool to add days to date (one by default)
+
+export const incrementByDays = (date = new Date(), howMany = 1) => {
+  return dayjs(date).add(howMany, 'day');
 };
 
 // tool function to sanitise date in to human readable format
