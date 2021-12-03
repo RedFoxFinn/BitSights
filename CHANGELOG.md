@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](///compare/v0.2.5...v0.3.0) (2021-12-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* marketvalue toolset, data visualisation
+
+### Features
+
+* new tools, components 8cba98f
+
 ### [0.2.5](///compare/v0.2.4...v0.2.5) (2021-12-02)
 
 ### [0.2.4](///compare/v0.2.3...v0.2.4) (2021-12-02)
