@@ -46,7 +46,7 @@ const findUpwardTrends = (dataset = null) => {
         trends[currentTrend].push(datapairCurrent);
       }
     }
-    return trends.filter((trend) => trend.length > 1);
+    return trends.filter((trend) => trend.length > 0);
   } else {
     return null;
   }
