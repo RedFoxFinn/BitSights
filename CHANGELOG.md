@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/RedFoxFinn/BitSights/compare/v0.3.3...v0.3.4) (2021-12-04)
+
+
+### Features
+
+* added trading volume analytics: highest & lowest trading volume on set date range ([e21bab2](https://github.com/RedFoxFinn/BitSights/commit/e21bab2e5ab5fec3de72e52fb036c9a7307cde20))
+
 ### [0.3.3](https://github.com/RedFoxFinn/BitSights/compare/v0.3.2...v0.3.3) (2021-12-03)
 
 ### [0.3.2](///compare/v0.3.1...v0.3.2) (2021-12-03)
