@@ -1,8 +1,8 @@
 
 import {
-  transmutateData,
-  sortData,
-  filterData,
+  transmutateValueData,
+  sortValueData,
+  filterValueData,
   splinterData
 } from './marketvalue';
 
@@ -21,7 +21,7 @@ const sampledata = [
   [1638147600000,25000]
 ];
 
-describe('transmutateData', () => {
+describe('transmutateValueData', () => {
   let dummy = false;
   beforeAll(() => {
     setDRStart(createDate('2021-11-28'));
@@ -32,15 +32,15 @@ describe('transmutateData', () => {
     dummy = true;
     expect(dummy).toBe(true);
   });
-  it('transmutateData, only', () => {
-    const result = transmutateData(sampledata, true);
+  it('transmutateValueData, only', () => {
+    const result = transmutateValueData(sampledata, true);
     expect(result).toBeTruthy();
     expect(result.length).toBe(9);
     expect(result[0]).toHaveProperty('datetime');
     expect(result[0]).toHaveProperty('value');
   });
-  it('transmutateData, full', () => {
-    const result = transmutateData(sampledata);
+  it('transmutateValueData, full', () => {
+    const result = transmutateValueData(sampledata);
     expect(result).toBeTruthy();
     expect(result.length).toBe(7);
     expect(result[0]).toHaveProperty('datetime');
@@ -48,9 +48,9 @@ describe('transmutateData', () => {
   });
 });
 
-describe('sortData', () => {
+describe('sortValueData', () => {
   let dummy = false;
-  let dataset = transmutateData(sampledata, true);
+  let dataset = transmutateValueData(sampledata, true);
   beforeAll(() => {
     setDRStart(createDate('2021-11-28'));
     setDREnd(createDate('2021-12-04'));
@@ -61,14 +61,14 @@ describe('sortData', () => {
     expect(dummy).toBe(true);
   });
   it('sortData, only', () => {
-    const result = sortData(dataset, true);
+    const result = sortValueData(dataset, true);
     expect(result).toBeTruthy();
     expect(result.length).toBe(9);
     expect(result[0]).toHaveProperty('datetime');
     expect(result[0]).toHaveProperty('value');
   });
   it('sortData, full', () => {
-    const result = sortData(dataset);
+    const result = sortValueData(dataset);
     expect(result).toBeTruthy();
     expect(result.length).toBe(7);
     expect(result[0]).toHaveProperty('datetime');
@@ -76,9 +76,9 @@ describe('sortData', () => {
   });
 });
 
-describe('filterData', () => {
+describe('filterValueData', () => {
   let dummy = false;
-  let dataset = sortData(transmutateData(sampledata, true),true);
+  let dataset = sortValueData(transmutateValueData(sampledata, true),true);
   beforeAll(() => {
     setDRStart(createDate('2021-11-28'));
     setDREnd(createDate('2021-12-04'));
@@ -89,7 +89,7 @@ describe('filterData', () => {
     expect(dummy).toBe(true);
   });
   it('filterData', () => {
-    const result = filterData(dataset);
+    const result = filterValueData(dataset);
     expect(result).toBeTruthy();
     expect(result.length).toBe(7);
     expect(result[0]).toHaveProperty('datetime');
@@ -99,7 +99,7 @@ describe('filterData', () => {
 
 describe('splinterData', () => {
   let dummy = false;
-  let dataset = transmutateData(sampledata);
+  let dataset = transmutateValueData(sampledata);
   beforeAll(() => {
     setDRStart(createDate('2021-11-28'));
     setDREnd(createDate('2021-12-04'));

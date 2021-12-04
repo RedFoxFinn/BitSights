@@ -7,19 +7,19 @@ import { timestampIt, calculateDateDiff, incrementByDays, sanitiseDate } from '.
 
 import { getColorWithAlpha } from '../styles/colors';
 
-// transmutateData converts array of array to array of objects:
+// transmutateValueData converts array of array to array of objects:
 // [[datetime (milliseconds), market value (euros)]] => [{datetime (seconds), value (euros)}]
 
-export const transmutateData = (marketvalueData = [], transmutateOnly = false) => {
+export const transmutateValueData = (marketvalueData = [], transmutateOnly = false) => {
   const transmutated = marketvalueData.map((dataPair) => ({datetime: Math.floor(dataPair[0]/1000), value: dataPair[1]}));
-  return transmutateOnly ? transmutated : sortData(transmutated);
+  return transmutateOnly ? transmutated : sortValueData(transmutated);
 };
 
 // sortData sorts transmutated array of data by the datetime (seconds) from earliest to latest
 
-export const sortData = (data = [], sortOnly = false) => {
+export const sortValueData = (data = [], sortOnly = false) => {
   const sorted = data.sort((a,b) => a.datetime - b.datetime);
-  return sortOnly ? sorted : filterData(sorted);
+  return sortOnly ? sorted : filterValueData(sorted);
 };
 
 // getClosest is internal and not exported tool function to get from array the object that has closest datetime value to desired one (start, end or any from middle; these are UTC midnight values)
@@ -28,7 +28,7 @@ const getClosest = (data, target) => data.reduce((a, b) => Math.abs(target - b.d
 
 // filterData builds an array of UTC midnight timestamps and then by using these values and getClosest tool function creates filtered array of {datetime, value} which it will return at the end
 
-export const filterData = (data = []) => {
+export const filterValueData = (data = []) => {
   const start = getDRStart();
   const end = getDREnd();
   const increments = calculateDateDiff(start, end);
@@ -68,3 +68,7 @@ export const splinterData = (data = []) => {
   };
   return splinteredData;
 };
+
+// longestBearishBullish finds longest downward or upward trend in market value dataset
+
+export const longestBearishBullish = (dataset = [], bearish = false) => {};

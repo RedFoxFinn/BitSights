@@ -15,7 +15,8 @@ import TableRow from '@mui/material/TableRow';
 import ValueChart from './valueChart';
 
 import { getColor, getColorWithAlpha } from '../styles/colors';
-import { transmutateData, splinterData } from '../tools/marketvalue';
+import { transmutateValueData, splinterData } from '../tools/marketvalue';
+import { transmutateVolumeData } from '../tools/tradingvolume';
 
 import { sanitiseDate, calculateDateRangeLength } from '../tools/date';
 import { fetchBasicData } from '../controllers/redux/slices/basic';
@@ -26,7 +27,7 @@ import { fetchMarketData } from '../controllers/redux/slices/value';
 const Insight = (props) => {
   const { daterange_start, daterange_end } = useSelector(state => state.dates);
   const dispatcher = useDispatch();
-  const { marketvalues, fallback } = useSelector(state => state.values);
+  const { marketvalues, tradingvolumes, fallback } = useSelector(state => state.values);
   const { basicInfo } = useSelector(state => state.basics);
 
   useEffect(() => dispatcher(fetchBasicData()), [dispatcher]);
@@ -48,17 +49,32 @@ const Insight = (props) => {
       : null;
   };
 
+  // TradingVolumeHighLow is subcomponent that displays the highest/lowest trading volume and date of that value, selection done by using prop 'low', set as `false` by default
+
+  const TradingVolumeHighLow = ({dataset = null, low = false}) => {
+    return dataset
+      ? <TableRow>
+        <TableCell><Typography variant='subtitle1' >{low ? 'Lowest' : 'Highest'} trading volume</Typography></TableCell>
+        <TableCell><Typography variant='body1' >{low ? sanitiseDate(dataset[0].datetime) : sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
+        <TableCell><Typography variant='body1' >{low ? dataset[0].volume : dataset[dataset.length-1].volume} €</Typography></TableCell>
+      </TableRow>
+      : null;
+  };
+
   // AnalysedData is subcomponent that displays the market value data received from the API in a informative form
 
   const AnalysedData = () => {
-    const transmutatedDataSet = marketvalues && transmutateData(marketvalues);
-    return transmutatedDataSet
+    const transmutatedValueDataSet = marketvalues && transmutateValueData(marketvalues);
+    const transmutatedVolumeDataSet = tradingvolumes && transmutateVolumeData(tradingvolumes);
+    return transmutatedValueDataSet
       ? <React.Fragment>
         <TableRow>
-          <TableCell colSpan={2} >
-            <ValueChart data={splinterData(transmutatedDataSet)} />
+          <TableCell colSpan={3} >
+            <ValueChart data={splinterData(transmutatedValueDataSet)} />
           </TableCell>
         </TableRow>
+        <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={true} />
+        <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={false} />
       </React.Fragment>
       : null;
   };

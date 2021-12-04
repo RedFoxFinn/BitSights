@@ -9,14 +9,15 @@ import { getBitcoinMarket } from '../../services/fetch';
 export const fetchMarketData = createAsyncThunk(
   'values/fetchMarketData',
   async (thunkAPI) => {
-    const { prices } = await getBitcoinMarket();
-    return prices ?? null;
+    const market_data = await getBitcoinMarket();
+    return market_data ?? null;
   });
 
 export const valueSlice = createSlice({
   name: 'values',
   initialState: {
     marketvalues: null,
+    tradingvolumes: null,
     fallback: -0
   },
   reducers: {
@@ -25,7 +26,7 @@ export const valueSlice = createSlice({
     },
     RESET_MARKETVALUES: (state, action) => {
       state.marketvalues = null;
-    }, 
+    },
   },
   extraReducers: {
     [fetchMarketData.pending]: (state) => {
@@ -33,7 +34,8 @@ export const valueSlice = createSlice({
     },
     [fetchMarketData.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.marketvalues = payload;
+      state.marketvalues = payload.prices;
+      state.tradingvolumes = payload.total_volumes;
     },
     [fetchMarketData.rejected]: (state) => {
       state.loading = false;
