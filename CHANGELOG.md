@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/RedFoxFinn/BitSights/compare/v0.4.0...v0.4.1) (2021-12-04)
+
+
+### Bug Fixes
+
+* now includes arrays with length of 1 to results ([3cb9571](https://github.com/RedFoxFinn/BitSights/commit/3cb9571eaa29be799c439ce7f56b7e8eaf2e45f0))
+
 ## [0.4.0](https://github.com/RedFoxFinn/BitSights/compare/v0.3.4...v0.4.0) (2021-12-04)
 
 
