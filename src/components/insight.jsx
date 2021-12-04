@@ -15,10 +15,12 @@ import TableRow from '@mui/material/TableRow';
 import ValueChart from './valueChart';
 
 import { getColor, getColorWithAlpha } from '../styles/colors';
+
 import { transmutateValueData, splinterData } from '../tools/marketvalue';
 import { transmutateVolumeData } from '../tools/tradingvolume';
+import { findLongestDownwardTrend, findLongestUpwardTrend } from '../tools/deepvalueanalytics';
+import { sanitiseDate, calculateDateRangeLength, calculateDateDiff } from '../tools/date';
 
-import { sanitiseDate, calculateDateRangeLength } from '../tools/date';
 import { fetchBasicData } from '../controllers/redux/slices/basic';
 import { fetchMarketData } from '../controllers/redux/slices/value';
 
@@ -56,8 +58,31 @@ const Insight = (props) => {
       ? <TableRow>
         <TableCell><Typography variant='subtitle1' >{low ? 'Lowest' : 'Highest'} trading volume</Typography></TableCell>
         <TableCell><Typography variant='body1' >{low ? sanitiseDate(dataset[0].datetime) : sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
-        <TableCell><Typography variant='body1' >{low ? dataset[0].volume : dataset[dataset.length-1].volume} €</Typography></TableCell>
+        <TableCell><Typography variant='body1' >{low ? Math.round((dataset[0].volume + Number.EPSILON)*100)/100 : Math.round((dataset[dataset.length-1].volume + Number.EPSILON)*100)/100} €</Typography></TableCell>
       </TableRow>
+      : null;
+  };
+
+  // 
+
+  const MarketValueTrendBearishBullish = ({dataset = null, bearish = true}) => {
+    return dataset
+      ? <React.Fragment>
+        <TableRow>
+          <TableCell ><Typography variant='subtitle1' sx={{color: getColor(bearish ? 'special' : 'text')}} >Longest {bearish ? 'bearish' : 'bullish'} trend</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{calculateDateDiff(dataset[0].datetime*1000, dataset[dataset.length-1].datetime*1000)} days</Typography></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend start</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[0].datetime*1000)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor('info')}} >{Math.round((dataset[0].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend end</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[dataset.length-1].datetime*1000)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{Math.round((dataset[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+        </TableRow>
+      </React.Fragment>
       : null;
   };
 
@@ -66,6 +91,9 @@ const Insight = (props) => {
   const AnalysedData = () => {
     const transmutatedValueDataSet = marketvalues && transmutateValueData(marketvalues);
     const transmutatedVolumeDataSet = tradingvolumes && transmutateVolumeData(tradingvolumes);
+    const bearish = marketvalues && findLongestDownwardTrend(transmutatedValueDataSet);
+    const bullish = marketvalues && findLongestUpwardTrend(transmutatedValueDataSet);
+    console.log(bearish, bullish);
     return transmutatedValueDataSet
       ? <React.Fragment>
         <TableRow>
@@ -75,6 +103,8 @@ const Insight = (props) => {
         </TableRow>
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={true} />
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={false} />
+        <MarketValueTrendBearishBullish bearish={true} dataset={bearish} />
+        <MarketValueTrendBearishBullish bearish={false} dataset={bullish} />
       </React.Fragment>
       : null;
   };
@@ -99,7 +129,7 @@ const Insight = (props) => {
       ? <TableRow >
         <TableCell><Typography variant='subtitle1' >All-Time {low ? 'Low' : 'High'}</Typography></TableCell>
         <TableCell><Typography variant='body1' >{low ? sanitiseDate(basicInfo?.market_data?.atl_date) : sanitiseDate(basicInfo?.market_data?.ath_date)}</Typography></TableCell>
-        <TableCell><Typography variant='body1' >{low ? basicInfo?.market_data?.allTimeLow : basicInfo?.market_data?.allTimeHigh} €</Typography></TableCell>
+        <TableCell><Typography variant='body1' sx={{color: getColor(low ? 'special' : 'text')}} >{low ? basicInfo?.market_data?.allTimeLow : basicInfo?.market_data?.allTimeHigh} €</Typography></TableCell>
       </TableRow>
       : null;
   };
