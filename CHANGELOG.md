@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/RedFoxFinn/BitSights/compare/v0.3.4...v0.4.0) (2021-12-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* new tool functions to rely on, new components & view sections
+
+### Features
+
+* added deepvalueanalytics toolset & components to display longest bearish & bullish trend data ([e1262bb](https://github.com/RedFoxFinn/BitSights/commit/e1262bbe9b4cec7c0527cca61f4d461000cc5c45))
+
 ### [0.3.4](https://github.com/RedFoxFinn/BitSights/compare/v0.3.3...v0.3.4) (2021-12-04)
 
 
