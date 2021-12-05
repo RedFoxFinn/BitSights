@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/RedFoxFinn/BitSights/compare/v0.4.2...v0.4.3) (2021-12-05)
+
+
+### Bug Fixes
+
+* fixed multiple issues with date ranging and dates ([49f733c](https://github.com/RedFoxFinn/BitSights/commit/49f733cd8c211e50d160f4c4163652ecccd97914))
+
 ### [0.4.2](https://github.com/RedFoxFinn/BitSights/compare/v0.4.1...v0.4.2) (2021-12-04)
 
 ### [0.4.1](https://github.com/RedFoxFinn/BitSights/compare/v0.4.0...v0.4.1) (2021-12-04)
