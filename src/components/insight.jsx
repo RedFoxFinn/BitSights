@@ -70,16 +70,16 @@ const Insight = (props) => {
       ? <React.Fragment>
         <TableRow>
           <TableCell ><Typography variant='subtitle1' sx={{color: getColor(bearish ? 'special' : 'text')}} >Longest {bearish ? 'bearish' : 'bullish'} trend</Typography></TableCell>
-          <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{calculateDateDiff(dataset[0].datetime*1000, dataset[dataset.length-1].datetime*1000)} days</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{dataset.length-1} days</Typography></TableCell>
         </TableRow>
         <TableRow>
           <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend start</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[0].datetime*1000)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[0].datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor('info')}} >{Math.round((dataset[0].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
         </TableRow>
         <TableRow>
           <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend end</Typography></TableCell>
-          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[dataset.length-1].datetime*1000)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{Math.round((dataset[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
         </TableRow>
       </React.Fragment>

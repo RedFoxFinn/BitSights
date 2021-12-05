@@ -15,17 +15,17 @@ let dateUpperLimit;
 
 export const timestampIt = (date = new Date(), end = false, midnight = false) => {
   const timestampDate = midnight
-    ? dayjs(date).utc().hour(0).minute(0).second(0).millisecond(0)
+    ? dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0)
     : end
-      ? dayjs(date).utc().hour(1).minute(0).second(0).millisecond(0)
-      : dayjs(date).utc().subtract(1, 'day').hour(23).minute(0).second(0).millisecond(0);
+      ? dayjs.utc(date).add(1, 'hour')
+      : dayjs.utc(date).subtract(1, 'hour');
   return timestampDate.unix();
 };
 
 // tool to calculate date difference
 
 export const calculateDateDiff = (start, end) => {
-  return dayjs(end).utc().hour(0).minute(0).second(0).millisecond(0).diff(dayjs(start).utc().hour(0).minute(0).second(0).millisecond(0), 'day');
+  return dayjs.utc(end).diff(dayjs.utc(start), 'day');
 };
 
 // tool to calculate date range length
@@ -37,9 +37,9 @@ export const calculateDateRangeLength = (start, end) => {
 // tool to add days to date (one by default)
 
 export const incrementByDays = (date = new Date(), howMany = 1, format = false) => {
-  dateUpperLimit = dayjs(new Date());
-  const incremented = dayjs(date).add(howMany, 'day');
-  if (incremented.diff(dateUpperLimit, 'day') <= 0 && dayjs(date).diff(dateLowerLimit, 'day') >= 0) {
+  dateUpperLimit = dayjs.utc(new Date());
+  const incremented = dayjs.utc(date).add(howMany, 'day');
+  if (incremented.diff(dateUpperLimit, 'day') <= 0 && dayjs.utc(date).diff(dateLowerLimit, 'day') >= 0) {
     return format ? incremented.format('YYYY-MM-DD') : incremented;
   } else {
     return null;
@@ -49,15 +49,15 @@ export const incrementByDays = (date = new Date(), howMany = 1, format = false) 
 // tool function to sanitise date in to human readable format
 
 export const sanitiseDate = (date = new Date()) => {
-  return dayjs(date).hour(0).minute(0).second(0).millisecond(0).format('YYYY-MM-DD');
+  return dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0).format('YYYY-MM-DD');
 };
 
 // tool function to decrement date by one week
 
 export const decrementByWeek = (date = new Date(), format = false) => {
-  dateUpperLimit = dayjs(new Date());
-  const decremented = dayjs(date).hour(0).minute(0).second(0).millisecond(0).subtract(7, 'day');
-  if (decremented.diff(dateLowerLimit, 'day') >= 0 && dayjs(date).diff(dateUpperLimit, 'day') <= 0) {
+  dateUpperLimit = dayjs.utc(new Date());
+  const decremented = dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0).subtract(7, 'day');
+  if (decremented.diff(dateLowerLimit, 'day') >= 0 && dayjs.utc(date).diff(dateUpperLimit, 'day') <= 0) {
     return format ? decremented.format('YYYY-MM-DD') : decremented;
   } else {
     return null;
@@ -67,9 +67,9 @@ export const decrementByWeek = (date = new Date(), format = false) => {
 // tool function to increment date by one week
 
 export const incrementByWeek = (date = new Date(), format = false) => {
-  dateUpperLimit = dayjs(new Date());
-  const incremented = dayjs(date).hour(0).minute(0).second(0).millisecond(0).add(7, 'day');
-  if (incremented.diff(dateUpperLimit, 'day') <= 0 && dayjs(date).diff(dateLowerLimit, 'day') >= 0) {
+  dateUpperLimit = dayjs.utc(new Date());
+  const incremented = dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0).add(7, 'day');
+  if (incremented.diff(dateUpperLimit, 'day') <= 0 && dayjs.utc(date).diff(dateLowerLimit, 'day') >= 0) {
     return format ? incremented.format('YYYY-MM-DD') : incremented;
   } else {
     return null;
@@ -79,9 +79,9 @@ export const incrementByWeek = (date = new Date(), format = false) => {
 // tool function to create date
 
 export const createDate = (date = new Date(), format = false) => {
-  dateUpperLimit = dayjs(new Date());
-  if (dayjs(date).diff(dateLowerLimit, 'day') >= 0 && dayjs(date).diff(dateUpperLimit, 'day') <= 0) {
-    return format ? dayjs(date).hour(0).minute(0).second(0).millisecond(0).format('YYYY-MM-DD') : dayjs(date).hour(0).minute(0).second(0).millisecond(0);
+  dateUpperLimit = dayjs.utc(new Date());
+  if (dayjs.utc(date).diff(dateLowerLimit, 'day') >= 0 && dayjs.utc(date).diff(dateUpperLimit, 'day') <= 0) {
+    return format ? dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0).format('YYYY-MM-DD') : dayjs.utc(date).hour(0).minute(0).second(0).millisecond(0);
   } else {
     return null;
   }

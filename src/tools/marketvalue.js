@@ -3,7 +3,7 @@
 // toolset for mangling market value data received from the coingecko.com API for more suitable form
 
 import { getDRStart, getDREnd } from '../controllers/app/daterange';
-import { timestampIt, calculateDateDiff, incrementByDays, sanitiseDate } from './date';
+import { timestampIt, calculateDateDiff, incrementByDays, sanitiseDate, createDate } from './date';
 
 import { getColorWithAlpha } from '../styles/colors';
 
@@ -24,13 +24,13 @@ export const sortValueData = (data = [], sortOnly = false) => {
 
 // getClosest is internal and not exported tool function to get from array the object that has closest datetime value to desired one (start, end or any from middle; these are UTC midnight values)
 
-const getClosest = (data, target) => data.reduce((a, b) => Math.abs(target - b.datetime) < Math.abs(target - a.datetime) ? b : a);
+const getClosest = (data, target) => data.reduce((a, b) => Math.abs(target - a?.datetime) > Math.abs(target - b?.datetime) ? b : a);
 
 // filterData builds an array of UTC midnight timestamps and then by using these values and getClosest tool function creates filtered array of {datetime, value} which it will return at the end
 
 export const filterValueData = (data = []) => {
-  const start = getDRStart();
-  const end = getDREnd();
+  const start = createDate(getDRStart());
+  const end = createDate(getDREnd());
   const increments = calculateDateDiff(start, end);
   let dates = [];
   let filtered = [];
@@ -44,7 +44,7 @@ export const filterValueData = (data = []) => {
   dates.forEach((stamp) => {
     filtered.push(getClosest(data, stamp));
   });
-  return filtered;
+  return filtered.map(({datetime, value}) => ({datetime: datetime*1000, value: value}));
 };
 
 // splinterData tool function forms chart usable data from given data set
@@ -59,13 +59,15 @@ export const splinterData = (data = []) => {
     backgroundColor: getColorWithAlpha('warn',0.6)
   };
   data.forEach(({datetime, value}) => {
-    labels.push(sanitiseDate(datetime*1000));
+    console.log(datetime);
+    labels.push(sanitiseDate(datetime));
     dataset.data.push(value);
   });
   const splinteredData = {
     labels: labels,
     datasets: [dataset]
   };
+
   return splinteredData;
 };
 

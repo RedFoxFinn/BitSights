@@ -51,8 +51,8 @@ export const getBitcoinBasic = async () => {
 };
 
 export const getBitcoinMarket = async () => {
-  const start = timestampIt(getDRStart());
-  const end = timestampIt(getDREnd());
+  const start = timestampIt(getDRStart(), false, false);
+  const end = timestampIt(getDREnd(), true, false);
   const response = await axios.get(`${baseUrl}${marketUrlAdditive}${currencyUrlAdditive}&from=${start}&to=${end}`);
   return response?.data ?? null;
 };

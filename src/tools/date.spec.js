@@ -188,7 +188,7 @@ describe('timestampIt', () => {
     expect(dummy).toBe(true);
   });
   it('timestampIt', () => {
-    const result = timestampIt(new Date('2013-06-04T10:00:00.000Z'));
+    const result = timestampIt(createDate('2013-06-04'));
     expect(result).toBeTruthy();
     expect(result).toBe(1370300400);
   });

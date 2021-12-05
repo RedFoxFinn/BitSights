@@ -30,6 +30,7 @@ ChartJS.register(
 
 const options = {
   responsive: true,
+  scales: {},
   plugins: {
     legend: {
       display: false,
