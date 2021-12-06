@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/RedFoxFinn/BitSights/compare/v0.4.3...v0.4.4) (2021-12-06)
+
+
+### Features
+
+* header & footer ([0334d23](https://github.com/RedFoxFinn/BitSights/commit/0334d23156202104a11caf9c87d27891c75ebbe0))
+
 ### [0.4.3](https://github.com/RedFoxFinn/BitSights/compare/v0.4.2...v0.4.3) (2021-12-05)
 
 
