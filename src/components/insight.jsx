@@ -96,11 +96,7 @@ const Insight = (props) => {
     console.log(bearish, bullish);
     return transmutatedValueDataSet
       ? <React.Fragment>
-        <TableRow>
-          <TableCell colSpan={3} >
-            <ValueChart data={splinterData(transmutatedValueDataSet)} />
-          </TableCell>
-        </TableRow>
+        <ValueChart data={splinterData(transmutatedValueDataSet)} />
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={true} />
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={false} />
         <MarketValueTrendBearishBullish bearish={true} dataset={bearish} />
@@ -167,12 +163,16 @@ const Insight = (props) => {
   
   // returned component is a composite of DateRangeData and BasicData subcomponents
 
-  return <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
-    <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin market value</Typography>
-    <DateRangeData />
-    <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin information</Typography>
-    <BasicData />
-  </Card>;
+  return <React.Fragment>
+    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
+      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin market value</Typography>
+      <DateRangeData />
+    </Card>
+    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
+      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin information</Typography>
+      <BasicData />
+    </Card>
+  </React.Fragment>;
 };
 
 export default Insight;

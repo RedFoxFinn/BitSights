@@ -2,12 +2,10 @@
 // info.js
 // tool collection to provide application information
 
-import { appid, appname } from '../../package.json';
+import { appid, appname, version } from '../../package.json';
 
-export const APPID = () => {
-  return appid;
-};
+export const APPID = () => appid;
 
-export const APPNAME = () => {
-  return appname;
-};
+export const APPNAME = () => appname;
+
+export const VERSION = () => version;

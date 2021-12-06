@@ -3,6 +3,8 @@
 // component to visualise date/value dataset
 
 import React, {} from 'react';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -46,14 +48,18 @@ const options = {
 // ValueChart is BTC market value date/value line chart component
 
 const ValueChart = ({data}) => {
-  return <React.Fragment>
-    <Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn', 0.8)}} >₿TC market value in €</Typography>
-    <Line
-      options={options}
-      datasetIdKey='BTCmarketvalue'
-      data={data}
-    />
-  </React.Fragment>;
+  return <TableRow>
+    <TableCell colSpan={3} >
+      <React.Fragment>
+        <Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn', 0.8)}} >₿TC market value in €</Typography>
+        <Line
+          options={options}
+          datasetIdKey='BTCmarketvalue'
+          data={data}
+        />
+      </React.Fragment>
+    </TableCell>
+  </TableRow>;
 };
 
 export default ValueChart;

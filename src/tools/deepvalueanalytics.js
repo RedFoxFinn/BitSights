@@ -68,8 +68,16 @@ export const findLongestUpwardTrend = (dataset = null) => {
 
 // 
 
-export const findOptimalBuyingPoint = (dataset = null) => {};
+export const findSafeBuyingPoint = (dataset = null) => {};
 
 // 
 
-export const findOptimalSellingPoint = (dataset = null) => {};
+export const findRiskyBuingPoint = (dataset = null) => {};
+
+// 
+
+export const findSafeSellingPoint = (dataset = null) => {};
+
+// 
+
+export const findRiskySellingPoint = (dataset = null) => {};

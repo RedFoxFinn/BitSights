@@ -18,7 +18,8 @@ export const valueSlice = createSlice({
   initialState: {
     marketvalues: null,
     tradingvolumes: null,
-    fallback: -0
+    fallback: -0,
+    loading: false
   },
   reducers: {
     SET_MARKETVALUES: (state, action) => {

@@ -16,7 +16,8 @@ export const fetchBasicData = createAsyncThunk(
 export const basicSlice = createSlice({
   name: 'basics',
   initialState: {
-    basicInfo: null
+    basicInfo: null,
+    loading: false
   },
   reducers: {
     SET_BASICINFO: (state, action) => {
