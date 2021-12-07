@@ -66,10 +66,10 @@ export const findLongestUpwardTrend = (dataset = null) => {
   return sortedTrends[sortedTrends.length-1] ?? null;
 };
 
-// findSafeBuingPoint is tool function that will find and return the safest bitcoin buying day on the ranged dataset
+// findBuyingPoint is tool function that will find and return the safest bitcoin buying day on the ranged dataset
 
-export const findSafeBuyingPoint = (dataset = null) => {
-  if (dataset) {
+export const findBuyingPoint = (dataset = null) => {
+  if (dataset && dataset.length > 0) {
     let lowest = null;
     let highest = null;
     dataset.forEach((datapoint) => {
@@ -82,22 +82,21 @@ export const findSafeBuyingPoint = (dataset = null) => {
     });
     if (lowest?.datetime < highest?.datetime) {
       return lowest;
-    } else {
+    } else if (dataset.indexOf(highest) > 0) {
       const beforeHighest = dataset.filter((datapoint) => datapoint?.datetime < highest?.datetime);
       return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a.value - b.value)[0] : null;
+    } else if (dataset.indexOf(lowest) < dataset.length -1) {
+      const afterLowest = dataset.filter((datapoint) => datapoint?.datetime > highest?.datetime);
+      return afterLowest?.length > 0 ? afterLowest.sort((a, b) => b.value - a.value)[0] : null;
     }
   } else {
     return null;
   }
 };
 
-// 
+// findSellingPoint is tool function that will find and return the safest bitcoin selling day on the ranged dataset
 
-export const findRiskyBuingPoint = (dataset = null) => {};
-
-// 
-
-export const findSafeSellingPoint = (dataset = null) => {
+export const findSellingPoint = (dataset = null) => {
   if (dataset) {
     let lowest = null;
     let highest = null;
@@ -119,7 +118,3 @@ export const findSafeSellingPoint = (dataset = null) => {
     return null;
   }
 };
-
-// 
-
-export const findRiskySellingPoint = (dataset = null) => {};

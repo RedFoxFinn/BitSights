@@ -30,6 +30,8 @@ ChartJS.register(
   Legend
 );
 
+// options for the date/value chart
+
 const options = {
   responsive: true,
   scales: {},

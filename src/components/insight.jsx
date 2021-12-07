@@ -18,7 +18,7 @@ import { getColor, getColorWithAlpha } from '../styles/colors';
 
 import { transmutateValueData, splinterData } from '../tools/marketvalue';
 import { transmutateVolumeData } from '../tools/tradingvolume';
-import { findLongestDownwardTrend, findLongestUpwardTrend, findSafeBuyingPoint, findSafeSellingPoint } from '../tools/deepvalueanalytics';
+import { findLongestDownwardTrend, findLongestUpwardTrend, findBuyingPoint, findSellingPoint } from '../tools/deepvalueanalytics';
 import { sanitiseDate, calculateDateRangeLength } from '../tools/date';
 
 import { fetchBasicData } from '../controllers/redux/slices/basic';
@@ -51,6 +51,18 @@ const Insight = (props) => {
       : null;
   };
 
+  // ValueHighLow is subcomponent that displays the highest/lowest bitcoin value and date of that value, selection done by using prop 'low', set as `false` by default
+
+  const ValueHighLow = ({dataset = null, low = false}) => {
+    return dataset
+      ? <TableRow>
+        <TableCell><Typography variant='subtitle1' >{low ? 'Lowest' : 'Highest'} value</Typography></TableCell>
+        <TableCell><Typography variant='body1' >{low ? sanitiseDate(dataset[0].datetime) : sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
+        <TableCell><Typography variant='body1' sx={{color: getColor(low ? 'special' : 'text')}} >{!low ? Math.round((dataset[0].value + Number.EPSILON)*100)/100 : Math.round((dataset[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+      </TableRow>
+      : null;
+  };
+
   // TradingVolumeHighLow is subcomponent that displays the highest/lowest trading volume and date of that value, selection done by using prop 'low', set as `false` by default
 
   const TradingVolumeHighLow = ({dataset = null, low = false}) => {
@@ -63,7 +75,7 @@ const Insight = (props) => {
       : null;
   };
 
-  // 
+  // MarketValueTrendBearishBullish is subcomponent that displays the information of longest downward/upward market value trend, selection done by using prop 'bearish', set as `true` by default
 
   const MarketValueTrendBearishBullish = ({dataset = null, bearish = true}) => {
     return dataset
@@ -86,20 +98,57 @@ const Insight = (props) => {
       : null;
   };
 
+  // BuyingSellingRecommendation is subcomponent that shows the recommendations of if and if then when to sell or buy and with what market value
+
+  const BuyingSellingRecommendation = ({datasetBuy = null, datasetSell = null}) => {
+    return <React.Fragment>
+      <TableRow>
+        <TableCell colSpan={3} ><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Trade recommendations</Typography></TableCell>
+      </TableRow>
+      {datasetBuy
+        ? <TableRow>
+          <TableCell><Typography variant='subtitle1' >Buying recommended</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(datasetBuy?.datetime)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor('special')}} >{Math.round((datasetBuy.value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+        </TableRow>
+        : <TableRow>
+          <TableCell colSpan={3} ><Typography variant='subtitle1' sx={{color: getColor('special')}} >Buying not recommended</Typography></TableCell>
+        </TableRow>}
+      {datasetSell
+        ? <TableRow>
+          <TableCell><Typography variant='subtitle1' >Selling recommended</Typography></TableCell>
+          <TableCell><Typography variant='body1' >{sanitiseDate(datasetSell?.datetime)}</Typography></TableCell>
+          <TableCell><Typography variant='body1' sx={{color: getColor('text')}} >{Math.round((datasetSell?.value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+        </TableRow>
+        : <TableRow>
+          <TableCell colSpan={3} ><Typography variant='subtitle1' sx={{color: getColor('special')}} >Selling not recommended</Typography></TableCell>
+        </TableRow>}
+    </React.Fragment>;
+  };
+
   // AnalysedData is subcomponent that displays the market value data received from the API in a informative form
 
   const AnalysedData = () => {
-    const transmutatedValueDataSet = marketvalues && transmutateValueData(marketvalues);
-    const transmutatedVolumeDataSet = tradingvolumes && transmutateVolumeData(tradingvolumes);
-    const bearish = marketvalues && findLongestDownwardTrend(transmutatedValueDataSet);
-    const bullish = marketvalues && findLongestUpwardTrend(transmutatedValueDataSet);
-    const safeBuyingPoint = marketvalues && findSafeBuyingPoint(transmutatedValueDataSet);
-    const safeSellingPoint = marketvalues && findSafeSellingPoint(transmutatedValueDataSet);
+    const transmutatedValueDataSet = marketvalues ? transmutateValueData(marketvalues) : null;
+    const transmutatedVolumeDataSet = tradingvolumes ? transmutateVolumeData(tradingvolumes) : null;
+    const bearish = marketvalues && transmutatedValueDataSet ? findLongestDownwardTrend(transmutatedValueDataSet) : null;
+    const bullish = marketvalues && transmutatedValueDataSet ? findLongestUpwardTrend(transmutatedValueDataSet) : null;
+    const buyingPoint = marketvalues && transmutatedValueDataSet ? findBuyingPoint(transmutatedValueDataSet) : null;
+    const sellingPoint = marketvalues && transmutatedValueDataSet ? findSellingPoint(transmutatedValueDataSet) : null;
     return transmutatedValueDataSet
       ? <React.Fragment>
         <ValueChart data={splinterData(transmutatedValueDataSet)} />
+        <ValueHighLow dataset={transmutatedValueDataSet} low={true} />
+        <ValueHighLow dataset={transmutatedValueDataSet} low={false} />
+        <TableRow>
+          <TableCell colSpan={3} ><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Trade volume</Typography></TableCell>
+        </TableRow>
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={true} />
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={false} />
+        <BuyingSellingRecommendation datasetBuy={buyingPoint} datasetSell={sellingPoint} />
+        <TableRow>
+          <TableCell colSpan={3} ><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Market value trend</Typography></TableCell>
+        </TableRow>
         <MarketValueTrendBearishBullish bearish={true} dataset={bearish} />
         <MarketValueTrendBearishBullish bearish={false} dataset={bullish} />
       </React.Fragment>
