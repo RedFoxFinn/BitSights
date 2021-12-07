@@ -44,7 +44,7 @@ export const filterValueData = (data = []) => {
   dates.forEach((stamp) => {
     filtered.push(getClosest(data, stamp));
   });
-  return filtered.map(({datetime, value}) => ({datetime: datetime*1000, value: value}));
+  return filtered.map(({datetime, value}, index) => ({datetime: datetime*1000, value: value, index: index}));
 };
 
 // splinterData tool function forms chart usable data from given data set
@@ -59,7 +59,6 @@ export const splinterData = (data = []) => {
     backgroundColor: getColorWithAlpha('warn',0.6)
   };
   data.forEach(({datetime, value}) => {
-    console.log(datetime);
     labels.push(sanitiseDate(datetime));
     dataset.data.push(value);
   });

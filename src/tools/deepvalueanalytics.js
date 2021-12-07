@@ -1,10 +1,10 @@
 
-// 
-// 
+// deepvalueanalytics.js
+// alanytics toolset to find trends in datasets
 
 // findDownwardTrends is tool function to find bearish (downward) market value trends from date/value dataset 
 
-const findDownwardTrends = (dataset = null) => {
+export const findDownwardTrends = (dataset = null) => {
   let currentTrend = 0;
   let trends = [[]];
   if (dataset && dataset.length > 0) {
@@ -21,7 +21,7 @@ const findDownwardTrends = (dataset = null) => {
         trends[currentTrend].push(datapairCurrent);
       }
     }
-    return trends.filter((trend) => trend.length > 1);
+    return trends.filter((trend) => trend.length > 0);
   } else {
     return null;
   }
@@ -29,7 +29,7 @@ const findDownwardTrends = (dataset = null) => {
 
 // findDownwardTrends is tool function to find bullish (upward) market value trends from date/value dataset 
 
-const findUpwardTrends = (dataset = null) => {
+export const findUpwardTrends = (dataset = null) => {
   let currentTrend = 0;
   let trends = [[]];
   if (dataset && dataset.length > 0) {
@@ -66,9 +66,30 @@ export const findLongestUpwardTrend = (dataset = null) => {
   return sortedTrends[sortedTrends.length-1] ?? null;
 };
 
-// 
+// findSafeBuingPoint is tool function that will find and return the safest bitcoin buying day on the ranged dataset
 
-export const findSafeBuyingPoint = (dataset = null) => {};
+export const findSafeBuyingPoint = (dataset = null) => {
+  if (dataset) {
+    let lowest = null;
+    let highest = null;
+    dataset.forEach((datapoint) => {
+      if (lowest === null || lowest?.value > datapoint?.value) {
+        lowest = datapoint;
+      }
+      if (highest === null || highest?.value < datapoint?.value) {
+        highest = datapoint;
+      }
+    });
+    if (lowest?.datetime < highest?.datetime) {
+      return lowest;
+    } else {
+      const beforeHighest = dataset.filter((datapoint) => datapoint?.datetime < highest?.datetime);
+      return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a.value - b.value)[0] : null;
+    }
+  } else {
+    return null;
+  }
+};
 
 // 
 
@@ -76,7 +97,28 @@ export const findRiskyBuingPoint = (dataset = null) => {};
 
 // 
 
-export const findSafeSellingPoint = (dataset = null) => {};
+export const findSafeSellingPoint = (dataset = null) => {
+  if (dataset) {
+    let lowest = null;
+    let highest = null;
+    dataset.forEach((datapoint) => {
+      if (lowest === null || lowest?.value > datapoint?.value) {
+        lowest = datapoint;
+      }
+      if (highest === null || highest?.value < datapoint?.value) {
+        highest = datapoint;
+      }
+    });
+    if (highest?.datetime < lowest?.datetime) {
+      return highest;
+    } else {
+      const beforeLowest = dataset.filter((datapoint) => datapoint?.datetime > lowest?.datetime);
+      return beforeLowest?.length > 0 ? beforeLowest.sort((a,b) => a.value - b.value)[0] : null;
+    }
+  } else {
+    return null;
+  }
+};
 
 // 
 

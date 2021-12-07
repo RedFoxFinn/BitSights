@@ -18,8 +18,8 @@ import { getColor, getColorWithAlpha } from '../styles/colors';
 
 import { transmutateValueData, splinterData } from '../tools/marketvalue';
 import { transmutateVolumeData } from '../tools/tradingvolume';
-import { findLongestDownwardTrend, findLongestUpwardTrend } from '../tools/deepvalueanalytics';
-import { sanitiseDate, calculateDateRangeLength, calculateDateDiff } from '../tools/date';
+import { findLongestDownwardTrend, findLongestUpwardTrend, findSafeBuyingPoint, findSafeSellingPoint } from '../tools/deepvalueanalytics';
+import { sanitiseDate, calculateDateRangeLength } from '../tools/date';
 
 import { fetchBasicData } from '../controllers/redux/slices/basic';
 import { fetchMarketData } from '../controllers/redux/slices/value';
@@ -93,7 +93,8 @@ const Insight = (props) => {
     const transmutatedVolumeDataSet = tradingvolumes && transmutateVolumeData(tradingvolumes);
     const bearish = marketvalues && findLongestDownwardTrend(transmutatedValueDataSet);
     const bullish = marketvalues && findLongestUpwardTrend(transmutatedValueDataSet);
-    console.log(bearish, bullish);
+    const safeBuyingPoint = marketvalues && findSafeBuyingPoint(transmutatedValueDataSet);
+    const safeSellingPoint = marketvalues && findSafeSellingPoint(transmutatedValueDataSet);
     return transmutatedValueDataSet
       ? <React.Fragment>
         <ValueChart data={splinterData(transmutatedValueDataSet)} />
