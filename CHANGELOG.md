@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/RedFoxFinn/BitSights/compare/v0.4.5...v0.5.0) (2021-12-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* layout & component alterations, tool function requirements
+
+### Features
+
+* selling/buying recommendations ([deb5a35](https://github.com/RedFoxFinn/BitSights/commit/deb5a355d99b29e2696de32f61dd00c70549af61))
+
 ### [0.4.5](https://github.com/RedFoxFinn/BitSights/compare/v0.4.4...v0.4.5) (2021-12-07)
 
 
