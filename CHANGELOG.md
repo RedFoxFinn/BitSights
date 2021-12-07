@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/RedFoxFinn/BitSights/compare/v0.5.0...v1.0.0) (2021-12-07)
+
+
+### Bug Fixes
+
+* small style fixes, removals of unnecessary imports ([fbf9cfb](https://github.com/RedFoxFinn/BitSights/commit/fbf9cfb3cbeec5f1a80b2c58f539c71bedd4b027))
+
 ## [0.5.0](https://github.com/RedFoxFinn/BitSights/compare/v0.4.5...v0.5.0) (2021-12-07)
 
 
