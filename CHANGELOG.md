@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/RedFoxFinn/BitSights/compare/v0.4.4...v0.4.5) (2021-12-07)
+
+
+### Features
+
+* deepvalueanalytics: findSafeBuyingPoint & findSafeSellingPoint ([6086063](https://github.com/RedFoxFinn/BitSights/commit/6086063a1efaed9bd66b75dae4c7f4ba0dd2331a))
+
 ### [0.4.4](https://github.com/RedFoxFinn/BitSights/compare/v0.4.3...v0.4.4) (2021-12-06)
 
 
