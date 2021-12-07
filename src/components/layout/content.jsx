@@ -11,7 +11,7 @@ import DateRange from '../dateInput';
 import Insight from '../insight';
 
 const Content = ({id}) => {
-  return <Stack id={id} data-testid={id} direction='column' spacing={2} sx={{marginTop: '1rem', marginBottom: '1rem'}} >
+  return <Stack id={id} data-testid={id} direction='column' spacing={2} sx={{margin: '1rem'}} >
     <DateRange id={generateID(id, 'daterange')} />
     <Insight id={generateID(id, 'insight')} />
   </Stack>;

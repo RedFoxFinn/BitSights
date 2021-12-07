@@ -158,7 +158,7 @@ const Insight = (props) => {
   // DateRangeData is subcomponent that composes market value data and DateRange subcomponent to informative view in UI
 
   const DateRangeData = () => {
-    return <Stack direction='column' sx={{marginBottom: '1rem'}} >
+    return <Stack direction='column' sx={{margin: '0 1rem'}} >
       <Table size='small' >
         <TableBody>
           <DateRange/>
@@ -184,7 +184,7 @@ const Insight = (props) => {
 
   const BasicData = () => {
     return basicInfo
-      ? <Stack direction='column' >
+      ? <Stack direction='column' sx={{margin: '0 1rem'}} >
         <Table size='small' >
           <TableBody>
             <TableRow>
@@ -214,12 +214,12 @@ const Insight = (props) => {
   // returned component is a composite of DateRangeData and BasicData subcomponents
 
   return <React.Fragment>
-    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
-      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin market value</Typography>
+    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', margin: '1rem'}} >
+      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8), margin: '0 1rem'}}>₿itcoin market value</Typography>
       <DateRangeData />
     </Card>
-    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', marginTop: '1rem', marginBottom: '1rem'}} >
-      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8)}}>₿itcoin information</Typography>
+    <Card sx={{backgroundColor: getColor('background'), padding: '1rem', margin: '1rem'}} >
+      <Typography variant='h5' sx={{color: getColorWithAlpha('warn',0.8), margin: '0 1rem'}}>₿itcoin information</Typography>
       <BasicData />
     </Card>
   </React.Fragment>;

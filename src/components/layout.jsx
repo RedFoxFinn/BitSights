@@ -37,15 +37,13 @@ const TheLayout = ({id}) => {
     }
   });
   
-  return <Box id={id} data-testid={id} >
-    <ThemeProvider theme={theme} >
-      <Box id={id} data-testid={id} sx={{margin: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <Header id={generateID(id, 'header')} />
-        <Content id={generateID(id, 'content')} />
-        <Footer id={generateID(id, 'footer')} />
-      </Box>
-    </ThemeProvider>
-  </Box>;
+  return <ThemeProvider theme={theme} >
+    <Box id={id} data-testid={id} sx={{margin: '1rem 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <Header id={generateID(id, 'header')} />
+      <Content id={generateID(id, 'content')} />
+      <Footer id={generateID(id, 'footer')} />
+    </Box>
+  </ThemeProvider>;
 };
 
 export default TheLayout;

@@ -5,8 +5,6 @@
 import { getDRStart, getDREnd } from '../controllers/app/daterange';
 import { timestampIt, calculateDateDiff, incrementByDays } from './date';
 
-import { getColorWithAlpha } from '../styles/colors';
-
 // transmutateVolumeData converts array of array to array of objects:
 // [[datetime (milliseconds), trading volume (euros)]] => [{datetime (seconds), volume (euros)}]
 
