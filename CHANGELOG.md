@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/RedFoxFinn/BitSights/compare/v1.0.0...v1.0.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* fixed logic behind highest/lowest value on daterange, additional tests ([13db399](https://github.com/RedFoxFinn/BitSights/commit/13db3990b4fa8e3d1624a741cd79969e28475196))
+
 ## [1.0.0](https://github.com/RedFoxFinn/BitSights/compare/v0.5.0...v1.0.0) (2021-12-07)
 
 
