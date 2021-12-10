@@ -69,7 +69,3 @@ export const splinterData = (data = []) => {
 
   return splinteredData;
 };
-
-// longestBearishBullish finds longest downward or upward trend in market value dataset
-
-export const longestBearishBullish = (dataset = [], bearish = false) => {};

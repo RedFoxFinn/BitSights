@@ -14,6 +14,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
+import { generateID } from '../tools/id';
 import { fetchMarketData } from '../controllers/redux/slices/value';
 import { set_dr_start, set_dr_end } from '../controllers/redux/slices/date';
 import { getColor } from '../styles/colors';
@@ -23,12 +24,12 @@ import { getColor } from '../styles/colors';
 const DateRange = ({id}) => {
   const dates = useSelector(state => state.dates);
   const dispatch = useDispatch();
-  return <Card sx={{backgroundColor: getColor('background'), padding: '1rem'}} >
-    <Table>
+  return <Card sx={{backgroundColor: getColor('background'), padding: '1rem'}} id={id} data-testid={id} >
+    <Table size='small' >
       <TableBody>
         <TableRow>
-          <StartDate dispatcher={dispatch} value={dates?.daterange_start} />
-          <EndDate dispatcher={dispatch} value={dates?.daterange_end} />
+          <StartDate dispatcher={dispatch} value={dates?.daterange_start} id={generateID(id, 'start')} />
+          <EndDate dispatcher={dispatch} value={dates?.daterange_end} id={generateID(id, 'end')} />
         </TableRow>
       </TableBody>
     </Table>
@@ -37,16 +38,17 @@ const DateRange = ({id}) => {
 
 // StartDate is subcomponent that forms the date selection tool for DateRange
 
-const StartDate = ({dispatcher, value}) => {
+const StartDate = ({dispatcher, value, id}) => {
 
   const handleDateChange = (newValue) => {
     dispatcher(set_dr_start(newValue));
     dispatcher(fetchMarketData());
   };
 
-  return <TableCell>
+  return <TableCell >
     <LocalizationProvider dateAdapter={DateAdapter}>
       <DatePicker
+        id={id} data-testid={id}
         sx={{
           padding: '1rem'
         }}
@@ -64,16 +66,17 @@ const StartDate = ({dispatcher, value}) => {
 
 // EndDate is subcomponent that forms the date selection tool for DateRange
 
-const EndDate = ({dispatcher, value}) => {
+const EndDate = ({dispatcher, value, id}) => {
 
   const handleDateChange = (newValue) => {
     dispatcher(set_dr_end(newValue));
     dispatcher(fetchMarketData());
   };
 
-  return <TableCell>
+  return <TableCell >
     <LocalizationProvider dateAdapter={DateAdapter}>
       <DatePicker
+        id={id} data-testid={id} 
         sx={{
           padding: '1rem'
         }}

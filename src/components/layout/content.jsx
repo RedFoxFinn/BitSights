@@ -2,8 +2,7 @@
 // content.jsx
 // file provides view of content for the BitSights application
 
-import React, {  } from 'react';
-import { } from 'react-redux';
+import React from 'react';
 import Stack from '@mui/material/Stack';
 
 import { generateID } from '../../tools/id';

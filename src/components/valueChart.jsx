@@ -20,6 +20,8 @@ import Typography from '@mui/material/Typography';
 
 import { getColorWithAlpha } from '../styles/colors';
 
+import { generateID } from '../tools/id';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -49,12 +51,15 @@ const options = {
 
 // ValueChart is BTC market value date/value line chart component
 
-const ValueChart = ({data}) => {
-  return <TableRow>
+const ValueChart = ({data, id = 'default'}) => {
+  const chartId = generateID(id, 'line_chart');
+  return <TableRow id={id} data-testid={id} >
     <TableCell colSpan={3} >
       <React.Fragment>
         <Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn', 0.8)}} >₿TC market value in €</Typography>
         <Line
+          id={chartId}
+          data-testid={chartId}
           options={options}
           datasetIdKey='BTCmarketvalue'
           data={data}

@@ -20,9 +20,9 @@ const Header = ({id}) => {
     display: 'inline-flex',
     textAlign: 'center',
     justifyItems: 'center',
-    alignItems: 'baseline'
+    alignItems: 'center'
   }} >
-    <Typography variant='h1' title='₿itcoint market value analytics' sx={{fontSize: '1.5rem', color: getColor('special')}} >₿itSights </Typography>
+    <Typography variant='h1' title='₿itcoint market value analytics' sx={{fontSize: '1.5rem', color: getColor('special')}} >₿itSights</Typography>
     {renderIt() && <Typography variant='overline' sx={{marginLeft: '1rem', color: getColor('text')}} >[LOADING..]</Typography>}
   </header>;
 };
