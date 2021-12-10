@@ -31,14 +31,21 @@ DISCLAIMER: The tool cannot do any reliable predictions into the future, only to
 
 ## Development status
 
+![test/build/deploy](https://github.com/RedFoxFinn/BitSights/workflows/test\/build\/deploy/badge.svg)
+
+[![codecov](https://codecov.io/gh/RedFoxFinn/BitSights/branch/front/graph/badge.svg?token=95YUYFYK5L)](https://codecov.io/gh/RedFoxFinn/BitSights)
+
+[![BitSights](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/2kasr2/BitSights&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2kasr2/runs)
+
 | Feature | Status |
 | :------ | :----: |
-| UI layout | dev |
-| Date range input | dev |
-| Market value indicator | dev |
-| Market value indicator (bearish/bullish) | dev |
-| Longest bullish trend length | dev |
-| Longest bearish trend length | dev |
+| UI layout | ready |
+| Date range input | ready |
+| Market value indicator | ready |
+| Market value indicator (bearish/bullish) | ready |
+| Longest bullish trend length | ready |
+| Longest bearish trend length | ready |
+| Buying/Selling recommendations | ready |
 
 ## Stack
 
