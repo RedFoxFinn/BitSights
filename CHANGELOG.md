@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/RedFoxFinn/BitSights/compare/v1.0.2...v1.0.3) (2021-12-11)
+
+
+### Bug Fixes
+
+* theLayout useEffect => useLayoutEffect | test fixes & cypress config updates ([c417183](https://github.com/RedFoxFinn/BitSights/commit/c41718309402b15d25482476da0cc7b7a5f90754))
+
 ### [1.0.2](https://github.com/RedFoxFinn/BitSights/compare/v1.0.1...v1.0.2) (2021-12-11)
 
 ### [1.0.1](https://github.com/RedFoxFinn/BitSights/compare/v1.0.0...v1.0.1) (2021-12-10)
