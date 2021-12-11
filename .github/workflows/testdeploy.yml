@@ -34,7 +34,7 @@ jobs:
         start: yarn start
         wait-on: 'http://localhost:3000/'
         wait-on-timeout: 60
-        browser: google-chrome-stable
+        browser: chrome
         record: true
       env:
         CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}

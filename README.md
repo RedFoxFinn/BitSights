@@ -7,7 +7,8 @@ Web application to display Bitcoin market value on desired date range with some 
 
 [![codecov](https://codecov.io/gh/RedFoxFinn/BitSights/branch/front/graph/badge.svg?token=95YUYFYK5L)](https://codecov.io/gh/RedFoxFinn/BitSights)
 
-[![BitSights](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/2kasr2/BitSights&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2kasr2/runs)
+[![BitSights](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/2kasr2/front&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2kasr2/runs)
+[![BitSights](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/count/2kasr2/front&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2kasr2/runs)
 
 ## Application
 
