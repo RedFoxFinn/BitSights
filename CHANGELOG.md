@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/RedFoxFinn/BitSights/compare/v1.0.3...v1.0.4) (2021-12-11)
+
+
+### Bug Fixes
+
+* content.spec.js fix: setTimeout for insight ([7d85650](https://github.com/RedFoxFinn/BitSights/commit/7d85650cc8f87a1f0907d97c89808c2d326f9c74))
+
 ### [1.0.3](https://github.com/RedFoxFinn/BitSights/compare/v1.0.2...v1.0.3) (2021-12-11)
 
 
