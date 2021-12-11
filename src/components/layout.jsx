@@ -2,7 +2,7 @@
 // layout.jsx
 // file provides basic layout for the BitSights application
 
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
