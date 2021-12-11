@@ -84,16 +84,16 @@ const Insight = (props) => {
   const MarketValueTrendBearishBullish = ({dataset = null, bearish = true, id = 'default'}) => {
     return dataset
       ? <React.Fragment key={id} >
-        <TableRow>
+        <TableRow id={`${id}.head`} data-testid={`${id}.head`} >
           <TableCell ><Typography variant='subtitle1' sx={{color: getColor(bearish ? 'special' : 'text')}} >Longest {bearish ? 'bearish' : 'bullish'} trend</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{dataset.length-1} days</Typography></TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow id={`${id}.start`} data-testid={`${id}.start`} >
           <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend start</Typography></TableCell>
           <TableCell><Typography variant='body1' >{sanitiseDate(dataset[0].datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor('info')}} >{Math.round((dataset[0].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow id={`${id}.end`} data-testid={`${id}.end`} >
           <TableCell><Typography variant='subtitle1' >{bearish ? 'Bearish' : 'Bullish'} trend end</Typography></TableCell>
           <TableCell><Typography variant='body1' >{sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor(bearish ? 'special' : 'text')}} >{Math.round((dataset[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
@@ -106,25 +106,25 @@ const Insight = (props) => {
 
   const BuyingSellingRecommendation = ({datasetBuy = null, datasetSell = null, id = 'default'}) => {
     return <React.Fragment key={id} >
-      <TableRow>
+      <TableRow id={`${id}.head`} data-testid={`${id}.head`} >
         <TableCell><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Trade recommendations</Typography></TableCell>
       </TableRow>
       {datasetBuy
-        ? <TableRow>
+        ? <TableRow id={`${id}.buy`} data-testid={`${id}.buy`} >
           <TableCell><Typography variant='subtitle1' >Buying recommended</Typography></TableCell>
           <TableCell><Typography variant='body1' >{sanitiseDate(datasetBuy?.datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor('special')}} >{Math.round((datasetBuy.value + Number.EPSILON)*100)/100} €</Typography></TableCell>
         </TableRow>
-        : <TableRow>
+        : <TableRow id={`${id}.buy`} data-testid={`${id}.buy`} >
           <TableCell><Typography variant='subtitle1' sx={{color: getColor('special')}} >Buying not recommended</Typography></TableCell>
         </TableRow>}
       {datasetSell
-        ? <TableRow>
+        ? <TableRow id={`${id}.sell`} data-testid={`${id}.sell`} >
           <TableCell><Typography variant='subtitle1' >Selling recommended</Typography></TableCell>
           <TableCell><Typography variant='body1' >{sanitiseDate(datasetSell?.datetime)}</Typography></TableCell>
           <TableCell><Typography variant='body1' sx={{color: getColor('text')}} >{Math.round((datasetSell?.value + Number.EPSILON)*100)/100} €</Typography></TableCell>
         </TableRow>
-        : <TableRow>
+        : <TableRow id={`${id}.sell`} data-testid={`${id}.sell`} >
           <TableCell><Typography variant='subtitle1' sx={{color: getColor('special')}} >Selling not recommended</Typography></TableCell>
         </TableRow>}
     </React.Fragment>;
@@ -144,13 +144,13 @@ const Insight = (props) => {
         <ValueChart data={splinterData(transmutatedValueDataSet)} id={generateID(id, 'value_chart')} />
         <ValueHighLow dataset={transmutatedValueDataSet} low={true} id={generateID(id, 'value_low')} />
         <ValueHighLow dataset={transmutatedValueDataSet} low={false} id={generateID(id, 'value_high')} />
-        <TableRow>
+        <TableRow id={`${id}.trade`} data-testid={`${id}.trade`} >
           <TableCell ><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Trade volume</Typography></TableCell>
         </TableRow>
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={true} id={generateID(id, 'volume_low')} />
         <TradingVolumeHighLow dataset={transmutatedVolumeDataSet} low={false} id={generateID(id, 'volume_high')} />
         <BuyingSellingRecommendation datasetBuy={buyingPoint} datasetSell={sellingPoint} id={generateID(id, 'trade_recommendations')} />
-        <TableRow>
+        <TableRow id={`${id}.trend`} data-testid={`${id}.trend`} >
           <TableCell ><Typography variant='subtitle1' sx={{color: getColorWithAlpha('warn',0.8)}} >Market value trend</Typography></TableCell>
         </TableRow>
         <MarketValueTrendBearishBullish bearish={true} dataset={bearish} id={generateID(id, 'trend_bearish')} />
