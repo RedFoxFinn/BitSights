@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/RedFoxFinn/BitSights/compare/v1.0.5...v1.0.6) (2021-12-11)
+
+
+### Bug Fixes
+
+* removed unused useEffect from TheLayout ([64082ea](https://github.com/RedFoxFinn/BitSights/commit/64082ea03bca2b32b766eddd1ce231fb905cb224))
+
 ### [1.0.5](https://github.com/RedFoxFinn/BitSights/compare/v1.0.4...v1.0.5) (2021-12-11)
 
 
