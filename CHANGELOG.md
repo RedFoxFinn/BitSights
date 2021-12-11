@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/RedFoxFinn/BitSights/compare/v1.0.4...v1.0.5) (2021-12-11)
+
+
+### Bug Fixes
+
+* cypress config fix for GH actions workflow ([02f8d15](https://github.com/RedFoxFinn/BitSights/commit/02f8d157aee27dddba40e192e10e9ac00b6a7bd8))
+
 ### [1.0.4](https://github.com/RedFoxFinn/BitSights/compare/v1.0.3...v1.0.4) (2021-12-11)
 
 
