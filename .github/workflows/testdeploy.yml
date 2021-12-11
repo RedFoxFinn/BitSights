@@ -8,6 +8,7 @@ on:
 jobs:
   CICD:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       CI: true
     steps:
@@ -26,13 +27,14 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
     - name: Cypress
       uses: cypress-io/github-action@v2
+      timeout-minutes: 5
       with:
         install: false
         headless: true
         start: yarn start
         wait-on: 'http://localhost:3000/'
-        wait-on-timeout: 120
-        browser: chrome
+        wait-on-timeout: 60
+        browser: google-chrome-stable
         record: true
       env:
         CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}

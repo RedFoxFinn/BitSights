@@ -2,9 +2,14 @@
   "baseUrl": "http://localhost:3000",
   "projectId": "2kasr2",
   "integrationFolder": "cypress/integration",
-  "pageLoadTimeout": 100000,
+  "pageLoadTimeout": 60000,
+  "execTimeout": 300000,
+  "requestTimeout": 10000,
+  "responseTimeout": 30000,
+  "slowTestTreshold": 10000,
+  "defaultCommandTimeout": 5000,
   "retries": {
-      "runMode": 2,
-      "openMode": 1
+      "runMode": 3,
+      "openMode": 3
   }
 }
