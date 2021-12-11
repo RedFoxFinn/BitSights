@@ -36,8 +36,10 @@ describe('content: unit test', () => {
     const component = screen.queryByTestId('test_content');
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Content);
-    const insight = within(component).queryByTestId('test_content.insight');
-    expect(insight).toBeTruthy();
-    isCompositeComponentWithType(insight, Insight);
+    setTimeout(() => {
+      const insight = within(component).queryByTestId('test_content.insight');
+      expect(insight).toBeTruthy();
+      isCompositeComponentWithType(insight, Insight);
+    }, 3500);
   });
 });
