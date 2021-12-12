@@ -82,21 +82,24 @@ export const findBuyingPoint = (dataset = null) => {
     });
     if (lowest?.datetime < highest?.datetime) {
       return lowest;
-    } else if (dataset.indexOf(highest) > 0) {
-      const beforeHighest = dataset.filter((datapoint) => datapoint?.datetime < highest?.datetime);
-      return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a.value - b.value)[0] : null;
-    } else if (dataset.indexOf(lowest) < dataset.length -1) {
-      const afterLowest = dataset.filter((datapoint) => datapoint?.datetime > highest?.datetime);
-      return afterLowest?.length > 0 ? afterLowest.sort((a, b) => b.value - a.value)[0] : null;
+    } else if (highest.index > 0) {
+      const beforeHighest = dataset.filter((datapoint) => datapoint?.index < highest?.index);
+      return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a?.value - b?.value)[0] : null;
+    } else if (lowest.index < dataset.length -1) {
+      const afterHighest = dataset.filter((datapoint) => datapoint?.index > highest?.index);
+      return afterHighest?.length > 0 ? afterHighest.sort((a, b) => a?.value - b?.value)[0] : null;
+    } else {
+      return null;
     }
   } else {
     return null;
   }
 };
 
-// findSellingPoint is tool function that will find and return the safest bitcoin selling day on the ranged dataset
+// findBuyingPoint is tool function that will find and return the safest bitcoin se day on the ranged dataset
 
 export const findSellingPoint = (dataset = null) => {
+  console.log(dataset);
   if (dataset) {
     let lowest = null;
     let highest = null;
@@ -110,9 +113,14 @@ export const findSellingPoint = (dataset = null) => {
     });
     if (highest?.datetime < lowest?.datetime) {
       return highest;
+    } else if (lowest?.index > 0) {
+      const beforeLowest = dataset.filter((datapoint) => datapoint?.index < lowest?.index);
+      return beforeLowest?.length > 0 ? beforeLowest.sort((a,b) => b?.value - a?.value)[0] : null;
+    } else if (highest?.index < dataset.length -1) {
+      const afterLowest = dataset.filter((datapoint) => datapoint?.index > lowest?.index);
+      return afterLowest?.length > 0 ? afterLowest.sort((a, b) => b?.value - a?.value)[0] : null;
     } else {
-      const beforeLowest = dataset.filter((datapoint) => datapoint?.datetime > lowest?.datetime);
-      return beforeLowest?.length > 0 ? beforeLowest.sort((a,b) => a.value - b.value)[0] : null;
+      return null;
     }
   } else {
     return null;
