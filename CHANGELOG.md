@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/RedFoxFinn/BitSights/compare/v1.2.0...v1.3.0) (2021-12-12)
+
+
+### Features
+
+* added date limitation logic to date picking components ([33a5917](https://github.com/RedFoxFinn/BitSights/commit/33a5917c34d55d32c34020943aea26912f0efe5d))
+
 ## [1.2.0](https://github.com/RedFoxFinn/BitSights/compare/v1.1.2...v1.2.0) (2021-12-12)
 
 
