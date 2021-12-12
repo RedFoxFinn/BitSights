@@ -2,7 +2,7 @@
   "appid": "rff.app.bitsights",
   "appname": "BitSights",
   "name": "bitsights",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "private": true,
   "homepage": ".",
   "repository": {
