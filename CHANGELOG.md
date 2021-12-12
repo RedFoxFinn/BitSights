@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/RedFoxFinn/BitSights/compare/v1.1.1...v1.1.2) (2021-12-12)
+
+
+### Bug Fixes
+
+* fix for Insight - ValueHighLow, logic behind highest/lowest on date range ([bb685a6](https://github.com/RedFoxFinn/BitSights/commit/bb685a6611628dd0eefb2bc9c6cc66c607809e9e))
+
 ### [1.1.1](https://github.com/RedFoxFinn/BitSights/compare/v1.1.0...v1.1.1) (2021-12-12)
 
 ## [1.1.0](https://github.com/RedFoxFinn/BitSights/compare/v1.0.7...v1.1.0) (2021-12-12)
