@@ -56,11 +56,12 @@ const Insight = (props) => {
   // ValueHighLow is subcomponent that displays the highest/lowest bitcoin value and date of that value, selection done by using prop 'low', set as `false` by default
 
   const ValueHighLow = ({dataset = null, low = false, id = 'default'}) => {
+    const sorted = dataset.sort((a,b) => a?.value - b?.value);
     return dataset
       ? <TableRow id={id} data-testid={id} >
         <TableCell><Typography variant='subtitle1' >{low ? 'Lowest' : 'Highest'} value</Typography></TableCell>
-        <TableCell><Typography variant='body1' >{low ? sanitiseDate(dataset[0].datetime) : sanitiseDate(dataset[dataset.length-1].datetime)}</Typography></TableCell>
-        <TableCell><Typography variant='body1' sx={{color: getColor(low ? 'special' : 'text')}} >{low ? Math.round((dataset[0].value + Number.EPSILON)*100)/100 : Math.round((dataset[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
+        <TableCell><Typography variant='body1' >{low ? sanitiseDate(sorted[0].datetime) : sanitiseDate(sorted[dataset.length-1].datetime)}</Typography></TableCell>
+        <TableCell><Typography variant='body1' sx={{color: getColor(low ? 'special' : 'text')}} >{low ? Math.round((sorted[0].value + Number.EPSILON)*100)/100 : Math.round((sorted[dataset.length-1].value + Number.EPSILON)*100)/100} €</Typography></TableCell>
       </TableRow>
       : null;
   };
