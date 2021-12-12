@@ -82,12 +82,12 @@ export const findBuyingPoint = (dataset = null) => {
     });
     if (lowest?.datetime < highest?.datetime) {
       return lowest;
-    } else if (highest.index > 0) {
-      const beforeHighest = dataset.filter((datapoint) => datapoint?.index < highest?.index);
-      return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a?.value - b?.value)[0] : null;
     } else if (lowest.index < dataset.length -1) {
       const afterHighest = dataset.filter((datapoint) => datapoint?.index > highest?.index);
       return afterHighest?.length > 0 ? afterHighest.sort((a, b) => a?.value - b?.value)[0] : null;
+    } else if (highest.index > 0) {
+      const beforeHighest = dataset.filter((datapoint) => datapoint?.index < highest?.index);
+      return beforeHighest?.length > 0 ? beforeHighest.sort((a,b) => a?.value - b?.value)[0] : null;
     } else {
       return null;
     }
