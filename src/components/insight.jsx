@@ -56,8 +56,6 @@ const Insight = (props) => {
   // ValueHighLow is subcomponent that displays the highest/lowest bitcoin value and date of that value, selection done by using prop 'low', set as `false` by default
 
   const ValueHighLow = ({dataset = null, low = false, id = 'default'}) => {
-    const sorted = dataset.sort((a, b) => a?.value - b?.value);
-    console.log(sorted);
     return dataset
       ? <TableRow id={id} data-testid={id} >
         <TableCell><Typography variant='subtitle1' >{low ? 'Lowest' : 'Highest'} value</Typography></TableCell>

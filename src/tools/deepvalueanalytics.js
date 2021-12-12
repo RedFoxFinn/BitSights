@@ -99,7 +99,6 @@ export const findBuyingPoint = (dataset = null) => {
 // findBuyingPoint is tool function that will find and return the safest bitcoin se day on the ranged dataset
 
 export const findSellingPoint = (dataset = null) => {
-  console.log(dataset);
   if (dataset) {
     let lowest = null;
     let highest = null;
