@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/RedFoxFinn/BitSights/compare/v1.0.7...v1.1.0) (2021-12-12)
+
+
+### Features
+
+* added custom react hook to provide window dimensions & require width > 800 for content ([5a775ab](https://github.com/RedFoxFinn/BitSights/commit/5a775abf7ee619906953866b7f80363a459548ad))
+
 ### [1.0.7](https://github.com/RedFoxFinn/BitSights/compare/v1.0.6...v1.0.7) (2021-12-12)
 
 
