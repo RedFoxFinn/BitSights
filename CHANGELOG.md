@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/RedFoxFinn/BitSights/compare/v1.0.6...v1.0.7) (2021-12-12)
+
+
+### Bug Fixes
+
+* added fix for trade recommendation logic ([3ce6c28](https://github.com/RedFoxFinn/BitSights/commit/3ce6c28b58952316433d899f3a5e60857748198c))
+
 ### [1.0.6](https://github.com/RedFoxFinn/BitSights/compare/v1.0.5...v1.0.6) (2021-12-11)
 
 
